@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowLeft, CheckCircle, Copy } from 'lucide-react';
 import { CartItem, Customer } from '../types';
+import { sendOrderConfirmationEmail } from '../services/emailService';
 
 interface CheckoutProps {
   items: CartItem[];
@@ -39,6 +40,22 @@ export const Checkout: React.FC<CheckoutProps> = ({
   };
 
   const handlePayment = () => {
+    const orderId = `PED${Date.now()}`;
+    
+    // Enviar email de confirmação
+    sendOrderConfirmationEmail({
+      customer,
+      items,
+      total,
+      orderId
+    }).then((success) => {
+      if (success) {
+        console.log('Email de confirmação enviado com sucesso!');
+      } else {
+        console.log('Erro ao enviar email de confirmação');
+      }
+    });
+    
     setStep('success');
     setTimeout(() => {
       onClearCart();
