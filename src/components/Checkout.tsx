@@ -109,7 +109,7 @@ export const Checkout: React.FC<CheckoutProps> = ({
               
               <div className="bg-gray-100 p-4 rounded-lg mb-4">
                 <p className="text-xs break-all text-gray-700 mb-2">
-                  00020126580014BR.GOV.BCB.PIX136366c7a8f-a3e5-4c58-b4db-7b23d85d72e85204000053039865802BR5925SUPPPOWER SUPLEMENTOS6009SAO PAULO62290525PEDIDO123456789012634567890120630401D7
+                  OLHA O PIX
                 </p>
                 <button
                   onClick={copyPixCode}
