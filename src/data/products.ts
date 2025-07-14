@@ -6,7 +6,7 @@ export const products: Product[] = [
     id: 1,
     name: "Nutren Just Protein 280g",
     price: 100.00,
-    image: "https://images.pexels.com/photos/4162491/pexels-photo-4162491.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://www.nestlehealthscience.com.br/sites/default/files/2024-04/nutren_just_protein_280g_frente.jpg",
     category: "Proteína",
     description: "Suplemento alimentar em pó feito com 100% de whey protein isolado, 20 vitaminas e minerais",
     benefits: ["100% Whey Protein Isolado", "20 vitaminas e minerais", "Auxilia formação muscular", "Recuperação e manutenção"],
