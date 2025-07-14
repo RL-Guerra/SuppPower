@@ -3,7 +3,7 @@ import { Product } from '../types';
 export const products: Product[] = [
   {
     id: 1,
-    name: "Whey Protein Premium",
+    name: "Nutren just protein 280g",
     price: 89.90,
     originalPrice: 119.90,
     image: "https://images.pexels.com/photos/4162491/pexels-photo-4162491.jpeg?auto=compress&cs=tinysrgb&w=400",
