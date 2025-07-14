@@ -18,7 +18,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }
         <img 
           src={product.image} 
           alt={product.name}
-          className="w-full h-64 object-cover"
+          className="w-full h-80 object-contain bg-white p-4"
         />
         {product.featured && (
           <div className="absolute top-3 left-3 bg-orange-500 text-white px-2 py-1 rounded-full text-sm font-semibold">
@@ -37,21 +37,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }
         )}
       </div>
       
-      <div className="p-6">
+      <div className="p-4">
         <div className="text-sm text-orange-500 font-semibold mb-2">{product.category}</div>
-        <h3 className="text-xl font-bold text-gray-800 mb-2">{product.name}</h3>
-        <p className="text-gray-600 mb-4 line-clamp-2">{product.description}</p>
+        <h3 className="text-lg font-bold text-gray-800 mb-2 min-h-[3rem] leading-tight">{product.name}</h3>
+        <p className="text-gray-600 mb-3 text-sm line-clamp-2">{product.description}</p>
         
-        <div className="flex items-center mb-4">
+        <div className="flex items-center mb-3">
           {[...Array(5)].map((_, i) => (
             <Star key={i} size={16} className="text-yellow-400 fill-current" />
           ))}
           <span className="text-gray-500 text-sm ml-2">(4.8)</span>
         </div>
         
-        <div className="flex flex-wrap gap-1 mb-4">
+        <div className="flex flex-wrap gap-1 mb-3">
           {product.benefits.slice(0, 2).map((benefit, index) => (
-            <span key={index} className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">
+            <span key={index} className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs leading-tight">
               {benefit}
             </span>
           ))}
@@ -64,7 +64,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }
                 R$ {product.originalPrice.toFixed(2)}
               </span>
             )}
-            <span className="text-2xl font-bold text-gray-800">
+            <span className="text-xl font-bold text-gray-800">
               R$ {product.price.toFixed(2)}
             </span>
           </div>
