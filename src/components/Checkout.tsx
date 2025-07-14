@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { ArrowLeft, CheckCircle, Copy } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Copy, Loader } from 'lucide-react';
 import { CartItem, Customer } from '../types';
 import { sendOrderConfirmationEmail } from '../services/emailService';
+import { fetchAddressByCep, formatCep, validateCep } from '../services/viaCepService';
 
 interface CheckoutProps {
   items: CartItem[];
@@ -19,6 +20,8 @@ export const Checkout: React.FC<CheckoutProps> = ({
   onClearCart 
 }) => {
   const [step, setStep] = useState<'form' | 'payment' | 'success'>('form');
+  const [isLoadingCep, setIsLoadingCep] = useState(false);
+  const [cepError, setCepError] = useState('');
   const [customer, setCustomer] = useState<Customer>({
     name: '',
     email: '',
@@ -34,8 +37,50 @@ export const Checkout: React.FC<CheckoutProps> = ({
     }
   });
 
+  const handleCepChange = async (cep: string) => {
+    const formattedCep = formatCep(cep);
+    setCustomer({
+      ...customer, 
+      address: { ...customer.address, cep: formattedCep }
+    });
+    
+    setCepError('');
+    
+    // Se o CEP estiver completo, busca o endereço
+    if (validateCep(formattedCep)) {
+      setIsLoadingCep(true);
+      
+      const addressData = await fetchAddressByCep(formattedCep);
+      
+      if (addressData) {
+        setCustomer(prev => ({
+          ...prev,
+          address: {
+            ...prev.address,
+            street: addressData.logradouro || '',
+            neighborhood: addressData.bairro || '',
+            city: addressData.localidade || '',
+            state: addressData.uf || '',
+            cep: formattedCep
+          }
+        }));
+        setCepError('');
+      } else {
+        setCepError('CEP não encontrado. Verifique e tente novamente.');
+      }
+      
+      setIsLoadingCep(false);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateCep(customer.address.cep)) {
+      setCepError('Por favor, insira um CEP válido');
+      return;
+    }
+    
     setStep('payment');
   };
 
@@ -64,7 +109,17 @@ export const Checkout: React.FC<CheckoutProps> = ({
   };
 
   const copyPixCode = () => {
-    navigator.clipboard.writeText('00020126580014BR.GOV.BCB.PIX136366c7a8f-a3e5-4c58-b4db-7b23d85d72e85204000053039865802BR5925SUPPPOWER SUPLEMENTOS6009SAO PAULO62290525PEDIDO123456789012634567890120630401D7');
+    const pixCode = '00020126580014BR.GOV.BCB.PIX136366c7a8f-a3e5-4c58-b4db-7b23d85d72e85204000053039865802BR5925SUPPPOWER SUPLEMENTOS6009SAO PAULO62290525PEDIDO123456789012634567890120630401D7';
+    navigator.clipboard.writeText(pixCode);
+    
+    // Feedback visual
+    const button = document.querySelector('.copy-button');
+    if (button) {
+      button.textContent = 'Copiado!';
+      setTimeout(() => {
+        button.textContent = 'Copiar Código PIX';
+      }, 2000);
+    }
   };
 
   if (step === 'success') {
@@ -76,8 +131,11 @@ export const Checkout: React.FC<CheckoutProps> = ({
           <p className="text-gray-600 mb-4">
             Seu pedido foi recebido e será processado em breve.
           </p>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-500 mb-2">
             Você receberá um email com os detalhes do pedido.
+          </p>
+          <p className="text-xs text-orange-500">
+            Verifique também sua caixa de spam.
           </p>
         </div>
       </div>
@@ -113,7 +171,7 @@ export const Checkout: React.FC<CheckoutProps> = ({
                 </p>
                 <button
                   onClick={copyPixCode}
-                  className="flex items-center justify-center w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600"
+                  className="copy-button flex items-center justify-center w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition-colors"
                 >
                   <Copy size={16} className="mr-2" />
                   Copiar Código PIX
@@ -138,13 +196,13 @@ export const Checkout: React.FC<CheckoutProps> = ({
               
               <button
                 onClick={handlePayment}
-                className="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg font-semibold"
+                className="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg font-semibold transition-colors"
               >
                 Confirmar Pagamento
               </button>
               
               <p className="text-xs text-gray-500 mt-4">
-                Após o pagamento, seu pedido será confirmado automaticamente
+                Após o pagamento, seu pedido será confirmado automaticamente e você receberá um email de confirmação.
               </p>
             </div>
           </div>
@@ -176,6 +234,7 @@ export const Checkout: React.FC<CheckoutProps> = ({
               value={customer.name}
               onChange={(e) => setCustomer({...customer, name: e.target.value})}
               className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+              placeholder="Digite seu nome completo"
             />
           </div>
           
@@ -189,12 +248,13 @@ export const Checkout: React.FC<CheckoutProps> = ({
               value={customer.email}
               onChange={(e) => setCustomer({...customer, email: e.target.value})}
               className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+              placeholder="seu@email.com"
             />
           </div>
           
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Telefone *
+              Telefone/WhatsApp *
             </label>
             <input
               type="tel"
@@ -202,25 +262,42 @@ export const Checkout: React.FC<CheckoutProps> = ({
               value={customer.phone}
               onChange={(e) => setCustomer({...customer, phone: e.target.value})}
               className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+              placeholder="(11) 99999-9999"
             />
           </div>
           
-          <div className="grid grid-cols-2 gap-4">
-            <div>
+          <div className="border-t pt-4">
+            <h3 className="text-lg font-semibold mb-4">Endereço de Entrega</h3>
+            
+            <div className="relative">
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 CEP *
               </label>
-              <input
-                type="text"
-                required
-                value={customer.address.cep}
-                onChange={(e) => setCustomer({
-                  ...customer, 
-                  address: {...customer.address, cep: e.target.value}
-                })}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-              />
+              <div className="relative">
+                <input
+                  type="text"
+                  required
+                  value={customer.address.cep}
+                  onChange={(e) => handleCepChange(e.target.value)}
+                  className={`w-full border rounded-lg px-3 py-2 pr-10 focus:ring-2 focus:ring-orange-500 focus:border-transparent ${
+                    cepError ? 'border-red-500' : 'border-gray-300'
+                  }`}
+                  placeholder="00000-000"
+                  maxLength={9}
+                />
+                {isLoadingCep && (
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                    <Loader className="animate-spin text-orange-500" size={16} />
+                  </div>
+                )}
+              </div>
+              {cepError && (
+                <p className="text-red-500 text-sm mt-1">{cepError}</p>
+              )}
             </div>
+          </div>
+          
+          <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Estado *
@@ -234,24 +311,25 @@ export const Checkout: React.FC<CheckoutProps> = ({
                   address: {...customer.address, state: e.target.value}
                 })}
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                placeholder="SP"
               />
             </div>
-          </div>
-          
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Cidade *
-            </label>
-            <input
-              type="text"
-              required
-              value={customer.address.city}
-              onChange={(e) => setCustomer({
-                ...customer, 
-                address: {...customer.address, city: e.target.value}
-              })}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-            />
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Cidade *
+              </label>
+              <input
+                type="text"
+                required
+                value={customer.address.city}
+                onChange={(e) => setCustomer({
+                  ...customer, 
+                  address: {...customer.address, city: e.target.value}
+                })}
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                placeholder="São Paulo"
+              />
+            </div>
           </div>
           
           <div>
@@ -267,6 +345,7 @@ export const Checkout: React.FC<CheckoutProps> = ({
                 address: {...customer.address, neighborhood: e.target.value}
               })}
               className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+              placeholder="Centro"
             />
           </div>
           
@@ -284,6 +363,7 @@ export const Checkout: React.FC<CheckoutProps> = ({
                   address: {...customer.address, street: e.target.value}
                 })}
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                placeholder="Rua das Flores"
               />
             </div>
             <div>
@@ -299,6 +379,7 @@ export const Checkout: React.FC<CheckoutProps> = ({
                   address: {...customer.address, number: e.target.value}
                 })}
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                placeholder="123"
               />
             </div>
           </div>
@@ -315,15 +396,21 @@ export const Checkout: React.FC<CheckoutProps> = ({
                 address: {...customer.address, complement: e.target.value}
               })}
               className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+              placeholder="Apto 101, Bloco A (opcional)"
             />
           </div>
           
           <button
             type="submit"
-            className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-lg font-semibold mt-6"
+            disabled={isLoadingCep}
+            className="w-full bg-orange-500 hover:bg-orange-600 disabled:bg-gray-400 text-white py-3 rounded-lg font-semibold mt-6 transition-colors"
           >
-            Continuar para Pagamento
+            {isLoadingCep ? 'Buscando endereço...' : 'Continuar para Pagamento'}
           </button>
+          
+          <p className="text-xs text-gray-500 text-center mt-4">
+            Ao continuar, você receberá um email de confirmação com todos os detalhes do pedido.
+          </p>
         </form>
       </div>
     </div>
