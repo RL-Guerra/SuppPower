@@ -101,7 +101,7 @@ export const Checkout: React.FC<CheckoutProps> = ({
             <div className="text-center mb-6">
               <h3 className="text-lg font-semibold mb-2">QR Code PIX</h3>
               <div className="bg-gray-200 w-48 h-48 mx-auto mb-4 flex items-center justify-center rounded-lg">
-                <span className="text-gray-500">QR Code PIX</span>
+                <span className="text-gray-500">QR Code PIX1</span>
               </div>
               <p className="text-sm text-gray-600 mb-4">
                 Escaneie o QR Code ou copie o código PIX abaixo
