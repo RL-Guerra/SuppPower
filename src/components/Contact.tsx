@@ -47,7 +47,8 @@ export const Contact: React.FC = () => {
       name: "Carla Santos",
       product: "Fibermais Colágeno Limão",
       rating: 4,
-      comment: "Produto muito bom para regulação intestinal. O sabor limão é agradável e dissolve bem na água.   Unico ponto ruim é a demora para chegar, mas venho tudo certo"
+      comment: "Produto muito bom para regulação intestinal. O sabor limão é agradável e dissolve bem na água."
+        "Unico ponto ruim é a demora para chegar, mas venho tudo certo"
     },
     {
       id: 5,
