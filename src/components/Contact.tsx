@@ -4,7 +4,7 @@ import { Phone, Mail, MapPin, Clock, Instagram, Facebook, MessageCircle } from '
 export const Contact: React.FC = () => {
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent("Olá! Gostaria de saber mais sobre os produtos da SuppPower.");
-    window.open(`https://wa.me/5511934820682?text=${message}`, '_blank');
+    window.open(`https://wa.me/5511999999999?text=${message}`, '_blank');
   };
 
   const handleInstagramClick = () => {
