@@ -104,9 +104,6 @@ export const Contact: React.FC = () => {
         rating: 0,
         comment: ''
       });
-      
-      // Mostrar mensagem de sucesso
-      alert('Avaliação enviada com sucesso! Obrigado pelo seu feedback.');
     }
   };
 
