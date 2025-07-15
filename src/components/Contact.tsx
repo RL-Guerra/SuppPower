@@ -1,18 +1,140 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Instagram, Facebook, MessageCircle } from 'lucide-react';
 
+interface Review {
+  id: number;
+  name: string;
+  product: string;
+  rating: number;
+  comment: string;
+  isUserReview?: boolean;
+}
+
 export const Contact: React.FC = () => {
+  const [userReview, setUserReview] = useState<Review | null>(null);
+  const [reviewForm, setReviewForm] = useState({
+    name: '',
+    product: '',
+    rating: 0,
+    comment: ''
+  });
+
+  // Avaliações fixas que sempre aparecem
+  const fixedReviews: Review[] = [
+    {
+      id: 1,
+      name: "Marcos Silva",
+      product: "Nutren Protein Baunilha",
+      rating: 5,
+      comment: "Excelente qualidade! O Nutren Protein me ajudou muito na recuperação pós-treino. Recomendo!"
+    },
+    {
+      id: 2,
+      name: "Ana Costa",
+      product: "Sundown Ômega 3 Plus",
+      rating: 5,
+      comment: "Ótimo atendimento e produtos de qualidade. O Ômega 3 chegou rapidinho e já estou sentindo os benefícios!"
+    },
+    {
+      id: 3,
+      name: "Roberto Lima",
+      product: "Nutren Senior Chocolate",
+      rating: 5,
+      comment: "Minha esposa de 65 anos está usando o Nutren Senior e já notamos melhora na disposição. Muito bom!"
+    },
+    {
+      id: 4,
+      name: "Carla Santos",
+      product: "Fibermais Colágeno Limão",
+      rating: 4,
+      comment: "Produto muito bom para regulação intestinal. O sabor limão é agradável e dissolve bem na água."
+    },
+    {
+      id: 5,
+      name: "João Pereira",
+      product: "Sundown Vitamina C 1000mg",
+      rating: 5,
+      comment: "Desde que comecei a tomar, não fico mais gripado. Excelente custo-benefício com 180 comprimidos!"
+    },
+    {
+      id: 6,
+      name: "Maria Oliveira",
+      product: "Colágeno Vital Proteins",
+      rating: 4,
+      comment: "Notei melhora na pele e nas unhas após 2 meses de uso. Sem sabor é perfeito para misturar em qualquer bebida."
+    }
+  ];
+
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent("Olá! Gostaria de saber mais sobre os produtos da SuppPower.");
     window.open(`https://wa.me/5511999999999?text=${message}`, '_blank');
   };
 
   const handleInstagramClick = () => {
-    window.open('https://instagram.com', '_blank');
+    window.open('https://instagram.com/supppower', '_blank');
   };
 
   const handleFacebookClick = () => {
-    window.open('https://facebook.com', '_blank');
+    window.open('https://facebook.com/supppower', '_blank');
+  };
+
+  const handleStarClick = (rating: number) => {
+    setReviewForm({ ...reviewForm, rating });
+  };
+
+  const handleSubmitReview = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (reviewForm.name && reviewForm.product && reviewForm.rating && reviewForm.comment) {
+      const newReview: Review = {
+        id: Date.now(),
+        name: reviewForm.name,
+        product: reviewForm.product,
+        rating: reviewForm.rating,
+        comment: reviewForm.comment,
+        isUserReview: true
+      };
+      
+      setUserReview(newReview);
+      
+      // Limpar formulário
+      setReviewForm({
+        name: '',
+        product: '',
+        rating: 0,
+        comment: ''
+      });
+      
+      // Mostrar mensagem de sucesso
+      alert('Avaliação enviada com sucesso! Obrigado pelo seu feedback.');
+    }
+  };
+
+  // Combinar avaliações fixas com a avaliação do usuário (se existir)
+  const allReviews = userReview ? [...fixedReviews, userReview] : fixedReviews;
+
+  const getInitial = (name: string) => name.charAt(0).toUpperCase();
+
+  const renderStars = (rating: number, interactive = false, onStarClick?: (rating: number) => void) => {
+    return (
+      <div className="flex">
+        {[...Array(5)].map((_, i) => (
+          <button
+            key={i}
+            type={interactive ? "button" : undefined}
+            onClick={interactive && onStarClick ? () => onStarClick(i + 1) : undefined}
+            className={`text-2xl transition-colors ${
+              interactive ? 'hover:text-yellow-400 cursor-pointer' : ''
+            } ${
+              i < rating ? 'text-yellow-400' : 'text-gray-400'
+            }`}
+            disabled={!interactive}
+          >
+            ★
+          </button>
+        ))}
+      </div>
+    );
   };
 
   return (
@@ -132,108 +254,71 @@ export const Contact: React.FC = () => {
               O que nossos <span className="text-orange-500">clientes</span> dizem
             </h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              {/* Avaliação 1 */}
-              <div className="bg-gray-800 p-6 rounded-xl">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                    M
-                  </div>
-                  <div className="ml-4">
-                    <h4 className="font-semibold">Marcos Silva</h4>
-                    <div className="flex text-yellow-400">
-                      {[...Array(5)].map((_, i) => (
-                        <span key={i}>★</span>
-                      ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+              {allReviews.map((review) => (
+                <div key={review.id} className="bg-gray-800 p-6 rounded-xl">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                      {getInitial(review.name)}
+                    </div>
+                    <div className="ml-4">
+                      <h4 className="font-semibold">{review.name}</h4>
+                      {renderStars(review.rating)}
                     </div>
                   </div>
+                  <p className="text-gray-300 italic mb-2">
+                    "{review.comment}"
+                  </p>
+                  <p className="text-orange-500 text-sm">Produto: {review.product}</p>
+                  {review.isUserReview && (
+                    <p className="text-green-400 text-xs mt-2">✓ Sua avaliação</p>
+                  )}
                 </div>
-                <p className="text-gray-300 italic">
-                  "Excelente qualidade! O Nutren Protein me ajudou muito na recuperação pós-treino. Recomendo!"
-                </p>
-                <p className="text-orange-500 text-sm mt-2">Produto: Nutren Protein Baunilha</p>
-              </div>
-
-              {/* Avaliação 2 */}
-              <div className="bg-gray-800 p-6 rounded-xl">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                    A
-                  </div>
-                  <div className="ml-4">
-                    <h4 className="font-semibold">Ana Costa</h4>
-                    <div className="flex text-yellow-400">
-                      {[...Array(5)].map((_, i) => (
-                        <span key={i}>★</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <p className="text-gray-300 italic">
-                  "Ótimo atendimento e produtos de qualidade. O Ômega 3 chegou rapidinho e já estou sentindo os benefícios!"
-                </p>
-                <p className="text-orange-500 text-sm mt-2">Produto: Sundown Ômega 3 Plus</p>
-              {/* Avaliação 3 */}
-              <div className="bg-gray-800 p-6 rounded-xl">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                    R
-                  </div>
-                  <div className="ml-4">
-                    <h4 className="font-semibold">Roberto Lima</h4>
-                    <div className="flex text-yellow-400">
-                      {[...Array(5)].map((_, i) => (
-                        <span key={i}>★</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <p className="text-gray-300 italic">
-                  "Minha esposa de 65 anos está usando o Nutren Senior e já notamos melhora na disposição. Muito bom!"
-                </p>
-                <p className="text-orange-500 text-sm mt-2">Produto: Nutren Senior Chocolate</p>
-              </div>
+              ))}
             </div>
-              </div>
+
             {/* Formulário para nova avaliação */}
             <div className="bg-gray-800 rounded-xl p-6">
               <h4 className="text-xl font-semibold mb-4 text-center">Deixe sua avaliação</h4>
-              <form className="space-y-4">
+              <form onSubmit={handleSubmitReview} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <input
                     type="text"
                     placeholder="Seu nome"
+                    value={reviewForm.name}
+                    onChange={(e) => setReviewForm({ ...reviewForm, name: e.target.value })}
                     className="bg-gray-700 text-white p-3 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none"
+                    required
                   />
-                  <select className="bg-gray-700 text-white p-3 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none">
+                  <select 
+                    value={reviewForm.product}
+                    onChange={(e) => setReviewForm({ ...reviewForm, product: e.target.value })}
+                    className="bg-gray-700 text-white p-3 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none"
+                    required
+                  >
                     <option value="">Produto comprado</option>
-                    <option value="nutren-protein">Nutren Protein</option>
-                    <option value="omega-3">Ômega 3</option>
-                    <option value="nutren-senior">Nutren Senior</option>
-                    <option value="colageno">Colágeno</option>
-                    <option value="vitaminas">Vitaminas</option>
+                    <option value="Nutren Just Protein 280g">Nutren Just Protein 280g</option>
+                    <option value="Nutren Protein Baunilha 800g">Nutren Protein Baunilha 800g</option>
+                    <option value="Fibermais Colágeno Limão 300g">Fibermais Colágeno Limão 300g</option>
+                    <option value="Nutren Senior Chocolate 740g">Nutren Senior Chocolate 740g</option>
+                    <option value="Sundown Ômega 3 Plus 1000mg">Sundown Ômega 3 Plus 1000mg</option>
+                    <option value="Sundown Vitamina C 1000mg">Sundown Vitamina C 1000mg</option>
+                    <option value="Colágeno Vital Proteins">Colágeno Vital Proteins</option>
                   </select>
                 </div>
                 
                 <div className="text-center">
                   <p className="text-gray-300 mb-2">Sua avaliação:</p>
-                  <div className="flex justify-center space-x-1 mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <button
-                        key={i}
-                        type="button"
-                        className="text-2xl text-gray-400 hover:text-yellow-400 transition-colors"
-                      >
-                        ★
-                      </button>
-                    ))}
-                  </div>
+                  {renderStars(reviewForm.rating, true, handleStarClick)}
                 </div>
                 
                 <textarea
                   placeholder="Conte sua experiência com nossos produtos..."
                   rows={4}
+                  value={reviewForm.comment}
+                  onChange={(e) => setReviewForm({ ...reviewForm, comment: e.target.value })}
                   className="w-full bg-gray-700 text-white p-3 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none resize-none"
+                  required
                 ></textarea>
                 
                 <button
