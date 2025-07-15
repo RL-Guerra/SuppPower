@@ -26,8 +26,8 @@ export const Contact: React.FC = () => {
       id: 1,
       name: "Marcos Silva",
       product: "Nutren Protein Baunilha",
-      rating: 5,
-      comment: "Produto excelente! O Nutren Protein me ajudou muito na recuperação pós-treino. Recomendo!"
+      rating: 4,
+      comment: "Demorou 2 semanas para chegar, mais o produto excelente qualidade! O Nutren Protein me ajudou muito na recuperação pós-treino. Recomendo!"
     },
     {
       id: 2,
@@ -48,7 +48,7 @@ export const Contact: React.FC = () => {
       name: "Carla Santos",
       product: "Fibermais Colágeno Limão",
       rating: 4,
-      comment: "Produto muito bom para regulação intestinal. O sabor limão é agradável e dissolve bem na água."
+      comment: "Produto muito bom para regulação intestinal. O sabor limão é agradável e dissolve bem na água. Unico ponto negativo é a demora para chegar, mas venho tudo certo"
     },
     {
       id: 5,
