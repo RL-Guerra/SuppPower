@@ -26,7 +26,7 @@ export const Contact: React.FC = () => {
       id: 1,
       name: "Marcos Silva",
       product: "Nutren Protein Baunilha",
-      rating: 4,
+      rating: 3.5,
       comment: "Demorou 2 semanas para chegar, mais o produto excelente qualidade! O Nutren Protein me ajudou muito na recuperação pós-treino. Recomendo!"
     },
     {
