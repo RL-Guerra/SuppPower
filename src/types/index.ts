@@ -9,6 +9,7 @@ export interface Product {
   benefits: string[];
   inStock: boolean;
   featured?: boolean;
+  rating: number;
 }
 
 export interface CartItem extends Product {

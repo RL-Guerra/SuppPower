@@ -126,21 +126,124 @@ export const Contact: React.FC = () => {
             </div>
           </div>
 
-          {/* Call to Action */}
-          <div className="mt-16 text-center bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold mb-4">
-              Pronto para transformar seus resultados?
+          {/* Avaliações de Clientes */}
+          <div className="mt-16">
+            <h3 className="text-3xl font-bold text-center mb-12">
+              O que nossos <span className="text-orange-500">clientes</span> dizem
             </h3>
-            <p className="text-lg mb-6 opacity-90">
-              Entre em contato conosco e descubra os melhores suplementos para seus objetivos
-            </p>
-            <button
-              onClick={handleWhatsAppClick}
-              className="bg-white text-orange-500 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-colors inline-flex items-center space-x-2"
-            >
-              <MessageCircle size={20} />
-              <span>Falar no WhatsApp</span>
-            </button>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              {/* Avaliação 1 */}
+              <div className="bg-gray-800 p-6 rounded-xl">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    M
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="font-semibold">Marcos Silva</h4>
+                    <div className="flex text-yellow-400">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i}>★</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <p className="text-gray-300 italic">
+                  "Excelente qualidade! O Nutren Protein me ajudou muito na recuperação pós-treino. Recomendo!"
+                </p>
+                <p className="text-orange-500 text-sm mt-2">Produto: Nutren Protein Baunilha</p>
+              </div>
+
+              {/* Avaliação 2 */}
+              <div className="bg-gray-800 p-6 rounded-xl">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    A
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="font-semibold">Ana Costa</h4>
+                    <div className="flex text-yellow-400">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i}>★</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <p className="text-gray-300 italic">
+                  "Ótimo atendimento e produtos de qualidade. O Ômega 3 chegou rapidinho e já estou sentindo os benefícios!"
+                </p>
+                <p className="text-orange-500 text-sm mt-2">Produto: Sundown Ômega 3 Plus</p>
+              {/* Avaliação 3 */}
+              <div className="bg-gray-800 p-6 rounded-xl">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    R
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="font-semibold">Roberto Lima</h4>
+                    <div className="flex text-yellow-400">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i}>★</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <p className="text-gray-300 italic">
+                  "Minha esposa de 65 anos está usando o Nutren Senior e já notamos melhora na disposição. Muito bom!"
+                </p>
+                <p className="text-orange-500 text-sm mt-2">Produto: Nutren Senior Chocolate</p>
+              </div>
+            </div>
+              </div>
+            {/* Formulário para nova avaliação */}
+            <div className="bg-gray-800 rounded-xl p-6">
+              <h4 className="text-xl font-semibold mb-4 text-center">Deixe sua avaliação</h4>
+              <form className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    placeholder="Seu nome"
+                    className="bg-gray-700 text-white p-3 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none"
+                  />
+                  <select className="bg-gray-700 text-white p-3 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none">
+                    <option value="">Produto comprado</option>
+                    <option value="nutren-protein">Nutren Protein</option>
+                    <option value="omega-3">Ômega 3</option>
+                    <option value="nutren-senior">Nutren Senior</option>
+                    <option value="colageno">Colágeno</option>
+                    <option value="vitaminas">Vitaminas</option>
+                  </select>
+                </div>
+                
+                <div className="text-center">
+                  <p className="text-gray-300 mb-2">Sua avaliação:</p>
+                  <div className="flex justify-center space-x-1 mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <button
+                        key={i}
+                        type="button"
+                        className="text-2xl text-gray-400 hover:text-yellow-400 transition-colors"
+                      >
+                        ★
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                
+                <textarea
+                  placeholder="Conte sua experiência com nossos produtos..."
+                  rows={4}
+                  className="w-full bg-gray-700 text-white p-3 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none resize-none"
+                ></textarea>
+                
+                <button
+                  type="submit"
+                  className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-lg font-semibold transition-colors"
+                >
+                  Enviar Avaliação
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>

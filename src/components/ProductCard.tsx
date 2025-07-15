@@ -44,9 +44,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }
         
         <div className="flex items-center mb-3">
           {[...Array(5)].map((_, i) => (
-            <Star key={i} size={16} className="text-yellow-400 fill-current" />
+            <Star 
+              key={i} 
+              size={16} 
+              className={`${i < Math.floor(product.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} 
+            />
           ))}
-          <span className="text-gray-500 text-sm ml-2">(4.8)</span>
+          <span className="text-gray-500 text-sm ml-2">({product.rating})</span>
         </div>
         
         <div className="flex flex-wrap gap-1 mb-3">
