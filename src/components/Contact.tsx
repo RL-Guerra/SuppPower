@@ -8,11 +8,11 @@ export const Contact: React.FC = () => {
   };
 
   const handleInstagramClick = () => {
-    window.open('https://instagram.com/supppower', '_blank');
+    window.open('https://instagram.com', '_blank');
   };
 
   const handleFacebookClick = () => {
-    window.open('https://facebook.com/supppower', '_blank');
+    window.open('https://facebook.com', '_blank');
   };
 
   return (
