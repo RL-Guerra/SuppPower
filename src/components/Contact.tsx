@@ -237,7 +237,7 @@ export const Contact: React.FC = () => {
   };
 
   const handleFacebookClick = () => {
-    window.open('https://facebook.com/supppower', '_blank');
+    window.open('https://www.facebook.com/share/1B9BpFeJb7/?mibextid=wwXIfr', '_blank');
   };
 
   const handleStarClick = (rating: number) => {
