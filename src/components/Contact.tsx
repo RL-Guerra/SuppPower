@@ -63,6 +63,167 @@ export const Contact: React.FC = () => {
       product: "Colágeno Vital Proteins",
       rating: 4,
       comment: "Notei melhora na pele e nas unhas após 2 meses de uso. Sem sabor é perfeito para misturar em qualquer bebida."
+    },
+    {
+      id: 7,
+      name: "Pedro Almeida",
+      product: "Nutren Just Protein 280g",
+      rating: 4.5,
+      comment: "Produto de excelente qualidade! Chegou em 10 dias, dentro do prazo. O site é muito confiável e o whey protein isolado é realmente bom."
+    },
+    {
+      id: 8,
+      name: "Fernanda Rocha",
+      product: "Sundown Vitamina D 2000ui",
+      rating: 5,
+      comment: "Comprei para minha família toda. Site super confiável, entrega rápida e produto original. Já é a terceira vez que compro aqui!"
+    },
+    {
+      id: 9,
+      name: "Carlos Mendes",
+      product: "Nutren Senior Baunilha",
+      rating: 4.5,
+      comment: "Meu pai de 70 anos adora! Demorou uns 12 dias para chegar mas valeu a pena. Produto original e site confiável."
+    },
+    {
+      id: 10,
+      name: "Juliana Ferreira",
+      product: "Fibermais Sem Sabor",
+      rating: 4,
+      comment: "Ótimo para regular o intestino. Chegou bem embalado e dentro do prazo. Site confiável, recomendo!"
+    },
+    {
+      id: 11,
+      name: "Ricardo Santos",
+      product: "Sundown Ômega 3 1000mg",
+      rating: 4.5,
+      comment: "Produto excelente! Demorou 15 dias para chegar mas chegou certinho. Site muito confiável, já comprei várias vezes."
+    },
+    {
+      id: 12,
+      name: "Patrícia Lima",
+      product: "Sundown Vitamina E 400Ui",
+      rating: 5,
+      comment: "Chegou super rápido! Produto original e site muito confiável. Já indiquei para várias amigas."
+    },
+    {
+      id: 13,
+      name: "André Oliveira",
+      product: "Nutren Senior Café com Leite",
+      rating: 4.5,
+      comment: "Minha mãe adora o sabor! Demorou um pouquinho para chegar (10 dias) mas produto de qualidade. Site confiável!"
+    },
+    {
+      id: 14,
+      name: "Luciana Costa",
+      product: "Colágeno Vital Proteins",
+      rating: 4.5,
+      comment: "Produto maravilhoso! Já estou no segundo pote. Site super confiável e entrega sempre certinha."
+    },
+    {
+      id: 15,
+      name: "Thiago Barbosa",
+      product: "Sundown Vitamina C 1000mg",
+      rating: 5,
+      comment: "Excelente produto! Chegou em uma semana. Site muito confiável, sempre compro aqui meus suplementos."
+    },
+    {
+      id: 16,
+      name: "Camila Rodrigues",
+      product: "Nutren Protein Baunilha",
+      rating: 4.5,
+      comment: "Produto de ótima qualidade! Demorou 12 dias para chegar mas valeu a pena esperar. Site confiável e seguro."
+    },
+    {
+      id: 17,
+      name: "Gustavo Silva",
+      product: "Sundown Ômega 3 Plus 120 cápsulas",
+      rating: 5,
+      comment: "Melhor preço que encontrei! Produto original e site super confiável. Chegou em 8 dias, perfeito!"
+    },
+    {
+      id: 18,
+      name: "Renata Alves",
+      product: "Nutren Senior Mix de Frutas",
+      rating: 4,
+      comment: "Meu pai gostou muito do sabor! Demorou um pouco para chegar (2 semanas) mas produto excelente. Site confiável!"
+    },
+    {
+      id: 19,
+      name: "Marcelo Pereira",
+      product: "Fibermais Colágeno Limão",
+      rating: 4.5,
+      comment: "Produto muito bom! Chegou bem embalado e no prazo. Site confiável, já comprei outras vezes."
+    },
+    {
+      id: 20,
+      name: "Vanessa Santos",
+      product: "Sundown Vitamina E 1001ui",
+      rating: 4,
+      comment: "Ótimo produto! Demorou uns 10 dias para chegar mas chegou certinho. Site muito confiável, recomendo!"
+    },
+    {
+      id: 21,
+      name: "Felipe Costa",
+      product: "Nutren Senior Premium Baunilha",
+      rating: 5,
+      comment: "Produto excelente para minha avó! Site super confiável e entrega rápida. Já é cliente fiel!"
+    },
+    {
+      id: 22,
+      name: "Daniela Martins",
+      product: "Sundown Ômega 3 1000mg 180 cápsulas",
+      rating: 4.5,
+      comment: "Melhor custo benefício! Demorou 2 semanas para chegar mas produto original. Site muito confiável!"
+    },
+    {
+      id: 23,
+      name: "Bruno Ferreira",
+      product: "Nutren Senior Chocolate",
+      rating: 4.5,
+      comment: "Meu pai de 68 anos aprovou! Chegou em 9 dias, bem embalado. Site confiável e produtos de qualidade."
+    },
+    {
+      id: 24,
+      name: "Larissa Oliveira",
+      product: "Colágeno Vital Proteins",
+      rating: 5,
+      comment: "Produto maravilhoso! Já notei diferença na pele. Site super confiável, sempre compro aqui!"
+    },
+    {
+      id: 25,
+      name: "Rafael Lima",
+      product: "Sundown Vitamina D 2000ui",
+      rating: 4.5,
+      comment: "Excelente produto! Demorou um pouquinho (12 dias) mas chegou perfeito. Site muito confiável!"
+    },
+    {
+      id: 26,
+      name: "Priscila Santos",
+      product: "Nutren Just Protein 280g",
+      rating: 4,
+      comment: "Produto de qualidade! Chegou bem embalado e no prazo. Site confiável, já indiquei para amigas."
+    },
+    {
+      id: 27,
+      name: "Diego Almeida",
+      product: "Sundown Ômega 3 Plus 1000mg",
+      rating: 5,
+      comment: "Melhor site para comprar suplementos! Produto original e entrega sempre certinha. Super confiável!"
+    },
+    {
+      id: 28,
+      name: "Tatiana Costa",
+      product: "Fibermais Sem Sabor",
+      rating: 4.5,
+      comment: "Produto excelente! Demorou 10 dias para chegar mas valeu a pena. Site muito confiável e seguro."
+    },
+    {
+      id: 29,
+      name: "Leandro Silva",
+      product: "Nutren Senior Baunilha Zero Lactose",
+      rating: 4.5,
+      comment: "Perfeito para minha mãe que tem intolerância! Site confiável e produto de ótima qualidade."
     }
   ];
 
@@ -155,18 +316,58 @@ export const Contact: React.FC = () => {
   const getInitial = (name: string) => name.charAt(0).toUpperCase();
 
   const renderStars = (rating: number, interactive = false, onStarClick?: (rating: number) => void) => {
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 !== 0;
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+    
     return (
       <div className="flex">
-        {[...Array(5)].map((_, i) => (
+        {/* Estrelas cheias */}
+        {[...Array(fullStars)].map((_, i) => (
           <button
             key={i}
             type={interactive ? "button" : undefined}
             onClick={interactive && onStarClick ? () => onStarClick(i + 1) : undefined}
             className={`text-2xl transition-colors ${
               interactive ? 'hover:text-yellow-400 cursor-pointer' : ''
-            } ${
-              i < rating ? 'text-yellow-400' : 'text-gray-400'
-            }`}
+            } text-yellow-400`}
+            disabled={!interactive}
+          >
+            ★
+          </button>
+        ))}
+        
+        {/* Meia estrela */}
+        {hasHalfStar && (
+          <div className="relative">
+            <button
+              type={interactive ? "button" : undefined}
+              onClick={interactive && onStarClick ? () => onStarClick(fullStars + 1) : undefined}
+              className={`text-2xl transition-colors ${
+                interactive ? 'hover:text-yellow-400 cursor-pointer' : ''
+              } text-gray-400`}
+              disabled={!interactive}
+            >
+              ★
+            </button>
+            <div 
+              className="absolute top-0 left-0 overflow-hidden text-yellow-400 text-2xl pointer-events-none"
+              style={{ width: '50%' }}
+            >
+              ★
+            </div>
+          </div>
+        )}
+        
+        {/* Estrelas vazias */}
+        {[...Array(emptyStars)].map((_, i) => (
+          <button
+            key={fullStars + (hasHalfStar ? 1 : 0) + i}
+            type={interactive ? "button" : undefined}
+            onClick={interactive && onStarClick ? () => onStarClick(fullStars + (hasHalfStar ? 1 : 0) + i + 1) : undefined}
+            className={`text-2xl transition-colors ${
+              interactive ? 'hover:text-yellow-400 cursor-pointer' : ''
+            } text-gray-400`}
             disabled={!interactive}
           >
             ★

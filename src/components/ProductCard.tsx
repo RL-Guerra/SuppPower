@@ -43,13 +43,46 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }
         <p className="text-gray-600 mb-3 text-sm line-clamp-2">{product.description}</p>
         
         <div className="flex items-center mb-3">
-          {[...Array(5)].map((_, i) => (
-            <Star 
-              key={i} 
-              size={16} 
-              className={`${i < Math.floor(product.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} 
-            />
-          ))}
+          {(() => {
+            const fullStars = Math.floor(product.rating);
+            const hasHalfStar = product.rating % 1 !== 0;
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+            
+            return (
+              <>
+                {/* Estrelas cheias */}
+                {[...Array(fullStars)].map((_, i) => (
+                  <Star 
+                    key={`full-${i}`} 
+                    size={16} 
+                    className="text-yellow-400 fill-current" 
+                  />
+                ))}
+                
+                {/* Meia estrela */}
+                {hasHalfStar && (
+                  <div key="half" className="relative">
+                    <Star size={16} className="text-gray-300" />
+                    <div 
+                      className="absolute top-0 left-0 overflow-hidden"
+                      style={{ width: '50%' }}
+                    >
+                      <Star size={16} className="text-yellow-400 fill-current" />
+                    </div>
+                  </div>
+                )}
+                
+                {/* Estrelas vazias */}
+                {[...Array(emptyStars)].map((_, i) => (
+                  <Star 
+                    key={`empty-${i}`} 
+                    size={16} 
+                    className="text-gray-300" 
+                  />
+                ))}
+              </>
+            );
+          })()}
           <span className="text-gray-500 text-sm ml-2">({product.rating})</span>
         </div>
         
