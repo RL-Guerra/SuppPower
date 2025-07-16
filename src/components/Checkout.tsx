@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { ArrowLeft, CheckCircle, Copy, Loader } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Copy, Loader, CreditCard, Lock } from 'lucide-react';
 import { CartItem, Customer } from '../types';
 import { sendOrderConfirmationEmail } from '../services/emailService';
 import { fetchAddressByCep, formatCep, validateCep } from '../services/viaCepService';
+import { processCardPayment } from '../services/paymentService';
 
 interface CheckoutProps {
   items: CartItem[];
@@ -20,8 +21,16 @@ export const Checkout: React.FC<CheckoutProps> = ({
   onClearCart 
 }) => {
   const [step, setStep] = useState<'form' | 'payment' | 'success'>('form');
+  const [paymentMethod, setPaymentMethod] = useState<'pix' | 'card'>('pix');
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const [isLoadingCep, setIsLoadingCep] = useState(false);
   const [cepError, setCepError] = useState('');
+  const [cardData, setCardData] = useState({
+    number: '',
+    name: '',
+    expiry: '',
+    cvv: ''
+  });
   const [customer, setCustomer] = useState<Customer>({
     name: '',
     email: '',
@@ -84,7 +93,32 @@ export const Checkout: React.FC<CheckoutProps> = ({
     setStep('payment');
   };
 
-  const handlePayment = () => {
+  const handlePayment = async () => {
+    setIsProcessingPayment(true);
+    
+    let paymentSuccess = false;
+    
+    if (paymentMethod === 'card') {
+      // Processar pagamento com cartão
+      paymentSuccess = await processCardPayment({
+        cardData,
+        amount: total,
+        customer,
+        items
+      });
+    } else {
+      // Para PIX, simular confirmação após 2 segundos
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      paymentSuccess = true;
+    }
+    
+    setIsProcessingPayment(false);
+    
+    if (!paymentSuccess) {
+      alert('Erro no processamento do pagamento. Tente novamente.');
+      return;
+    }
+    
     const orderId = `PED${Date.now()}`;
     
     // Enviar email de confirmação
@@ -106,6 +140,29 @@ export const Checkout: React.FC<CheckoutProps> = ({
       onClearCart();
       onClose();
     }, 5000);
+  };
+
+  const formatCardNumber = (value: string) => {
+    const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+    const matches = v.match(/\d{4,16}/g);
+    const match = matches && matches[0] || '';
+    const parts = [];
+    for (let i = 0, len = match.length; i < len; i += 4) {
+      parts.push(match.substring(i, i + 4));
+    }
+    if (parts.length) {
+      return parts.join(' ');
+    } else {
+      return v;
+    }
+  };
+
+  const formatExpiry = (value: string) => {
+    const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+    if (v.length >= 2) {
+      return v.substring(0, 2) + '/' + v.substring(2, 4);
+    }
+    return v;
   };
 
   const copyPixCode = () => {
@@ -151,60 +208,199 @@ export const Checkout: React.FC<CheckoutProps> = ({
               <button onClick={onBack} className="p-2 hover:bg-gray-100 rounded mr-2">
                 <ArrowLeft size={24} />
               </button>
-              <h2 className="text-2xl font-bold">Pagamento PIX</h2>
+              <h2 className="text-2xl font-bold">Pagamento</h2>
             </div>
           </div>
           
           <div className="p-6">
-            <div className="text-center mb-6">
-              <h3 className="text-lg font-semibold mb-2">QR Code PIX</h3>
-              <div className="bg-gray-200 w-48 h-48 mx-auto mb-4 flex items-center justify-center rounded-lg">
-                <span className="text-gray-500">QR Code PIX</span>
-              </div>
-              <p className="text-sm text-gray-600 mb-4">
-                Escaneie o QR Code ou copie o código PIX abaixo
-              </p>
-              
-              <div className="bg-gray-100 p-4 rounded-lg mb-4">
-                <p className="text-xs break-all text-gray-700 mb-2">
-                  00020126580014BR.GOV.BCB.PIX136366c7a8f-a3e5-4c58-b4db-7b23d85d72e85204000053039865802BR5925SUPPPOWER SUPLEMENTOS6009SAO PAULO62290525PEDIDO123456789012634567890120630401D7
-                </p>
+            {/* Seleção do método de pagamento */}
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold mb-4">Escolha o método de pagamento:</h3>
+              <div className="grid grid-cols-2 gap-4">
                 <button
-                  onClick={copyPixCode}
-                  className="copy-button flex items-center justify-center w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition-colors"
+                  onClick={() => setPaymentMethod('pix')}
+                  className={`p-4 border-2 rounded-lg flex flex-col items-center transition-colors ${
+                    paymentMethod === 'pix' 
+                      ? 'border-orange-500 bg-orange-50' 
+                      : 'border-gray-300 hover:border-gray-400'
+                  }`}
                 >
-                  <Copy size={16} className="mr-2" />
-                  Copiar Código PIX
+                  <Copy size={24} className={paymentMethod === 'pix' ? 'text-orange-500' : 'text-gray-600'} />
+                  <span className={`mt-2 font-semibold ${paymentMethod === 'pix' ? 'text-orange-500' : 'text-gray-600'}`}>
+                    PIX
+                  </span>
+                </button>
+                
+                <button
+                  onClick={() => setPaymentMethod('card')}
+                  className={`p-4 border-2 rounded-lg flex flex-col items-center transition-colors ${
+                    paymentMethod === 'card' 
+                      ? 'border-orange-500 bg-orange-50' 
+                      : 'border-gray-300 hover:border-gray-400'
+                  }`}
+                >
+                  <CreditCard size={24} className={paymentMethod === 'card' ? 'text-orange-500' : 'text-gray-600'} />
+                  <span className={`mt-2 font-semibold ${paymentMethod === 'card' ? 'text-orange-500' : 'text-gray-600'}`}>
+                    Cartão
+                  </span>
                 </button>
               </div>
-              
-              <div className="text-left bg-orange-50 p-4 rounded-lg mb-6">
-                <h4 className="font-semibold mb-2">Resumo do Pedido:</h4>
-                {items.map(item => (
-                  <div key={item.id} className="flex justify-between text-sm mb-1">
-                    <span>{item.quantity}x {item.name}</span>
-                    <span>R$ {(item.price * item.quantity).toFixed(2)}</span>
+            </div>
+
+            {/* Formulário de pagamento baseado no método selecionado */}
+            {paymentMethod === 'pix' ? (
+              <div className="text-center mb-6">
+                <h3 className="text-lg font-semibold mb-2">QR Code PIX</h3>
+                <div className="bg-gray-200 w-48 h-48 mx-auto mb-4 flex items-center justify-center rounded-lg">
+                  <span className="text-gray-500">QR Code PIX</span>
+                </div>
+                <p className="text-sm text-gray-600 mb-4">
+                  Escaneie o QR Code ou copie o código PIX abaixo
+                </p>
+                
+                <div className="bg-gray-100 p-4 rounded-lg mb-4">
+                  <p className="text-xs break-all text-gray-700 mb-2">
+                    00020126580014BR.GOV.BCB.PIX136366c7a8f-a3e5-4c58-b4db-7b23d85d72e85204000053039865802BR5925SUPPPOWER SUPLEMENTOS6009SAO PAULO62290525PEDIDO123456789012634567890120630401D7
+                  </p>
+                  <button
+                    onClick={copyPixCode}
+                    className="copy-button flex items-center justify-center w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition-colors"
+                  >
+                    <Copy size={16} className="mr-2" />
+                    Copiar Código PIX
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold mb-4 flex items-center">
+                  <Lock size={20} className="mr-2 text-green-500" />
+                  Dados do Cartão (Seguro)
+                </h3>
+                
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Número do Cartão *
+                    </label>
+                    <input
+                      type="text"
+                      value={cardData.number}
+                      onChange={(e) => setCardData({
+                        ...cardData, 
+                        number: formatCardNumber(e.target.value)
+                      })}
+                      placeholder="1234 5678 9012 3456"
+                      maxLength={19}
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                      required
+                    />
                   </div>
-                ))}
-                <div className="border-t pt-2 mt-2 font-semibold">
-                  <div className="flex justify-between">
-                    <span>Total:</span>
-                    <span className="text-orange-500">R$ {total.toFixed(2)}</span>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Nome no Cartão *
+                    </label>
+                    <input
+                      type="text"
+                      value={cardData.name}
+                      onChange={(e) => setCardData({
+                        ...cardData, 
+                        name: e.target.value.toUpperCase()
+                      })}
+                      placeholder="NOME COMO NO CARTÃO"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Validade *
+                      </label>
+                      <input
+                        type="text"
+                        value={cardData.expiry}
+                        onChange={(e) => setCardData({
+                          ...cardData, 
+                          expiry: formatExpiry(e.target.value)
+                        })}
+                        placeholder="MM/AA"
+                        maxLength={5}
+                        className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        CVV *
+                      </label>
+                      <input
+                        type="text"
+                        value={cardData.cvv}
+                        onChange={(e) => setCardData({
+                          ...cardData, 
+                          cvv: e.target.value.replace(/\D/g, '')
+                        })}
+                        placeholder="123"
+                        maxLength={4}
+                        className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+                  <div className="flex items-center text-green-700 text-sm">
+                    <Lock size={16} className="mr-2" />
+                    <span>Seus dados estão protegidos com criptografia SSL</span>
                   </div>
                 </div>
               </div>
+            )}
               
-              <button
-                onClick={handlePayment}
-                className="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg font-semibold transition-colors"
-              >
-                Confirmar Pagamento
-              </button>
-              
-              <p className="text-xs text-gray-500 mt-4">
-                Após o pagamento, seu pedido será confirmado automaticamente e você receberá um email de confirmação.
-              </p>
+            <div className="text-left bg-orange-50 p-4 rounded-lg mb-6">
+              <h4 className="font-semibold mb-2">Resumo do Pedido:</h4>
+              {items.map(item => (
+                <div key={item.id} className="flex justify-between text-sm mb-1">
+                  <span>{item.quantity}x {item.name}</span>
+                  <span>R$ {(item.price * item.quantity).toFixed(2)}</span>
+                </div>
+              ))}
+              <div className="border-t pt-2 mt-2 font-semibold">
+                <div className="flex justify-between">
+                  <span>Total:</span>
+                  <span className="text-orange-500">R$ {total.toFixed(2)}</span>
+                </div>
+              </div>
             </div>
+              
+            <button
+              onClick={handlePayment}
+              disabled={isProcessingPayment || (paymentMethod === 'card' && (!cardData.number || !cardData.name || !cardData.expiry || !cardData.cvv))}
+              className="w-full bg-green-500 hover:bg-green-600 disabled:bg-gray-400 text-white py-3 rounded-lg font-semibold transition-colors flex items-center justify-center"
+            >
+              {isProcessingPayment ? (
+                <>
+                  <Loader className="animate-spin mr-2" size={20} />
+                  Processando...
+                </>
+              ) : (
+                <>
+                  {paymentMethod === 'card' ? <CreditCard className="mr-2" size={20} /> : <Copy className="mr-2" size={20} />}
+                  Confirmar Pagamento
+                </>
+              )}
+            </button>
+              
+            <p className="text-xs text-gray-500 mt-4 text-center">
+              {paymentMethod === 'card' 
+                ? 'Pagamento processado de forma segura. Você receberá um email de confirmação.'
+                : 'Após o pagamento, seu pedido será confirmado automaticamente e você receberá um email de confirmação.'
+              }
+            </p>
           </div>
         </div>
       </div>
