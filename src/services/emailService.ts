@@ -43,7 +43,8 @@ export const sendOrderConfirmationEmail = async (data: EmailData): Promise<boole
       ).join('\n'),
       delivery_address: formatAddress(data.customer.address),
       customer_phone: data.customer.phone,
-      customer_email: data.customer.email
+      customer_email: data.customer.email,
+      payment_method: 'PIX' // ou 'Cartão de Crédito'
     };
     
     await emailjs.send(
@@ -90,7 +91,7 @@ Telefone: ${customer.phone}
 ENDEREÇO DE ENTREGA:
 ${formatAddress(customer.address)}
 
-FORMA DE PAGAMENTO: PIX
+FORMA DE PAGAMENTO: ${getPaymentMethodFromContext() || 'PIX'}
 
 STATUS: Aguardando confirmação do pagamento
 
@@ -105,6 +106,12 @@ Instagram: @supppower
 
 © 2025 SuppPower - Suplementos de Alta Performance
   `;
+};
+
+const getPaymentMethodFromContext = (): string => {
+  // Em uma implementação real, você passaria o método de pagamento
+  // Por enquanto, retornamos PIX como padrão
+  return 'PIX';
 };
 
 const formatAddress = (address: any): string => {
