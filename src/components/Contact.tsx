@@ -229,7 +229,7 @@ export const Contact: React.FC = () => {
 
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent("Olá! Gostaria de saber mais sobre os produtos da SuppPower.");
-    window.open(`https://wa.me/5511999999999?text=${message}`, '_blank');
+    window.open(`https://wa.me/5518981621064?text=${message}`, '_blank');
   };
 
   const handleInstagramClick = () => {
@@ -401,7 +401,7 @@ export const Contact: React.FC = () => {
                   </div>
                   <div>
                     <p className="font-semibold">Telefone / WhatsApp</p>
-                    <p className="text-gray-300">(11) 99999-9999</p>
+                    <p className="text-gray-300">(18) 98162-1064</p>
                   </div>
                 </div>
                 
