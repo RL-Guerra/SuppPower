@@ -34,7 +34,7 @@ export const Contact: React.FC = () => {
       name: "Ana Costa",
       product: "Sundown Ômega 3 Plus",
       rating: 5,
-      comment: "Ótimo atendimento e produtos de qualidade. O Ômega 3 chegou rapidinho e já estou sentindo os benefícios!"
+      comment: "Melhor preço que encontrei na internet! O Ômega 3 chegou rapidinho e já estou sentindo os benefícios. Site muito confiável!"
     },
     {
       id: 3,
@@ -55,7 +55,7 @@ export const Contact: React.FC = () => {
       name: "João Pereira",
       product: "Sundown Vitamina C 1000mg",
       rating: 5,
-      comment: "Desde que comecei a tomar, não fico mais gripado. Excelente custo-benefício com 180 comprimidos!"
+      comment: "Preço muito melhor que na farmácia! Desde que comecei a tomar, não fico mais gripado. Site confiável e entrega rápida!"
     },
     {
       id: 6,
@@ -76,7 +76,7 @@ export const Contact: React.FC = () => {
       name: "Fernanda Rocha",
       product: "Sundown Vitamina D 2000ui",
       rating: 5,
-      comment: "Comprei para minha família toda. Site super confiável, entrega rápida e produto original. Já é a terceira vez que compro aqui!"
+      comment: "Preço imbatível! Muito mais barato que outras lojas. Site super confiável, entrega rápida e produto original. Já é a terceira vez que compro aqui!"
     },
     {
       id: 9,
@@ -97,7 +97,7 @@ export const Contact: React.FC = () => {
       name: "Ricardo Santos",
       product: "Sundown Ômega 3 1000mg",
       rating: 4.5,
-      comment: "Produto excelente! Demorou 15 dias para chegar mas chegou certinho. Site muito confiável, já comprei várias vezes."
+      comment: "Melhor preço do mercado! Produto excelente! Demorou 15 dias para chegar mas chegou certinho. Site muito confiável, já comprei várias vezes."
     },
     {
       id: 12,
@@ -139,7 +139,7 @@ export const Contact: React.FC = () => {
       name: "Gustavo Silva",
       product: "Sundown Ômega 3 Plus 120 cápsulas",
       rating: 5,
-      comment: "Melhor preço que encontrei! Produto original e site super confiável. Chegou em 8 dias, perfeito!"
+      comment: "Preço muito melhor que na concorrência! Produto original e site super confiável. Chegou em 8 dias, perfeito!"
     },
     {
       id: 18,
@@ -174,7 +174,7 @@ export const Contact: React.FC = () => {
       name: "Daniela Martins",
       product: "Sundown Ômega 3 1000mg 180 cápsulas",
       rating: 4.5,
-      comment: "Melhor custo benefício! Demorou 2 semanas para chegar mas produto original. Site muito confiável!"
+      comment: "Preço muito mais barato que outras lojas! Melhor custo benefício! Demorou 2 semanas para chegar mas produto original. Site muito confiável!"
     },
     {
       id: 23,
@@ -209,7 +209,7 @@ export const Contact: React.FC = () => {
       name: "Diego Almeida",
       product: "Sundown Ômega 3 Plus 1000mg",
       rating: 5,
-      comment: "Melhor site para comprar suplementos! Produto original e entrega sempre certinha. Super confiável!"
+      comment: "Preços imbatíveis! Melhor site para comprar suplementos! Muito mais barato que farmácias. Produto original e entrega sempre certinha. Super confiável!"
     },
     {
       id: 28,
