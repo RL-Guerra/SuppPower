@@ -25,6 +25,13 @@ export const Checkout: React.FC<CheckoutProps> = ({
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const [isLoadingCep, setIsLoadingCep] = useState(false);
   const [cepError, setCepError] = useState('');
+  const [paymentError, setPaymentError] = useState('');
+  const [cardErrors, setCardErrors] = useState({
+    number: '',
+    name: '',
+    expiry: '',
+    cvv: ''
+  });
   const [cardData, setCardData] = useState({
     number: '',
     name: '',
@@ -94,11 +101,20 @@ export const Checkout: React.FC<CheckoutProps> = ({
   };
 
   const handlePayment = async () => {
+    setPaymentError('');
     setIsProcessingPayment(true);
     
     let paymentSuccess = false;
     
     if (paymentMethod === 'card') {
+      // Validar dados do cartão antes de processar
+      const errors = validateCardDataWithErrors(cardData);
+      if (Object.values(errors).some(error => error !== '')) {
+        setCardErrors(errors);
+        setIsProcessingPayment(false);
+        return;
+      }
+      
       // Processar pagamento com cartão
       paymentSuccess = await processCardPayment({
         cardData,
@@ -115,7 +131,7 @@ export const Checkout: React.FC<CheckoutProps> = ({
     setIsProcessingPayment(false);
     
     if (!paymentSuccess) {
-      alert('Erro no processamento do pagamento. Tente novamente.');
+      setPaymentError('Erro no processamento do pagamento. Verifique os dados e tente novamente.');
       return;
     }
     
@@ -140,6 +156,57 @@ export const Checkout: React.FC<CheckoutProps> = ({
       onClearCart();
       onClose();
     }, 5000);
+  };
+
+  const validateCardDataWithErrors = (cardData: any) => {
+    const errors = {
+      number: '',
+      name: '',
+      expiry: '',
+      cvv: ''
+    };
+
+    // Validar número do cartão
+    const cardNumber = cardData.number.replace(/\s/g, '');
+    if (!cardNumber) {
+      errors.number = 'Número do cartão é obrigatório';
+    } else if (cardNumber.length < 13 || cardNumber.length > 19) {
+      errors.number = 'Número do cartão deve ter entre 13 e 19 dígitos';
+    }
+
+    // Validar nome
+    if (!cardData.name) {
+      errors.name = 'Nome no cartão é obrigatório';
+    } else if (cardData.name.length < 2) {
+      errors.name = 'Nome deve ter pelo menos 2 caracteres';
+    }
+
+    // Validar validade
+    if (!cardData.expiry) {
+      errors.expiry = 'Validade é obrigatória';
+    } else {
+      const [month, year] = cardData.expiry.split('/');
+      const currentDate = new Date();
+      const currentYear = currentDate.getFullYear() % 100;
+      const currentMonth = currentDate.getMonth() + 1;
+
+      if (!month || !year || 
+          parseInt(month) < 1 || parseInt(month) > 12) {
+        errors.expiry = 'Validade inválida';
+      } else if (parseInt(year) < currentYear ||
+          (parseInt(year) === currentYear && parseInt(month) < currentMonth)) {
+        errors.expiry = 'Cartão vencido';
+      }
+    }
+
+    // Validar CVV
+    if (!cardData.cvv) {
+      errors.cvv = 'CVV é obrigatório';
+    } else if (cardData.cvv.length < 3 || cardData.cvv.length > 4) {
+      errors.cvv = 'CVV deve ter 3 ou 4 dígitos';
+    }
+
+    return errors;
   };
 
   const formatCardNumber = (value: string) => {
@@ -292,9 +359,14 @@ export const Checkout: React.FC<CheckoutProps> = ({
                       })}
                       placeholder="1234 5678 9012 3456"
                       maxLength={19}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                      className={`w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent ${
+                        cardErrors.number ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                      }`}
                       required
                     />
+                    {cardErrors.number && (
+                      <p className="text-red-500 text-sm mt-1">{cardErrors.number}</p>
+                    )}
                   </div>
                   
                   <div>
@@ -309,9 +381,14 @@ export const Checkout: React.FC<CheckoutProps> = ({
                         name: e.target.value.toUpperCase()
                       })}
                       placeholder="NOME COMO NO CARTÃO"
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                      className={`w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent ${
+                        cardErrors.name ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                      }`}
                       required
                     />
+                    {cardErrors.name && (
+                      <p className="text-red-500 text-sm mt-1">{cardErrors.name}</p>
+                    )}
                   </div>
                   
                   <div className="grid grid-cols-2 gap-4">
@@ -328,9 +405,14 @@ export const Checkout: React.FC<CheckoutProps> = ({
                         })}
                         placeholder="MM/AA"
                         maxLength={5}
-                        className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        className={`w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent ${
+                          cardErrors.expiry ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                        }`}
                         required
                       />
+                      {cardErrors.expiry && (
+                        <p className="text-red-500 text-sm mt-1">{cardErrors.expiry}</p>
+                      )}
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -345,9 +427,14 @@ export const Checkout: React.FC<CheckoutProps> = ({
                         })}
                         placeholder="123"
                         maxLength={4}
-                        className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        className={`w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent ${
+                          cardErrors.cvv ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                        }`}
                         required
                       />
+                      {cardErrors.cvv && (
+                        <p className="text-red-500 text-sm mt-1">{cardErrors.cvv}</p>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -358,6 +445,12 @@ export const Checkout: React.FC<CheckoutProps> = ({
                     <span>Seus dados estão protegidos com criptografia SSL</span>
                   </div>
                 </div>
+              </div>
+            )}
+              
+            {paymentError && (
+              <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+                <p className="text-red-700 text-sm">{paymentError}</p>
               </div>
             )}
               
