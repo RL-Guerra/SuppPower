@@ -210,7 +210,7 @@ export const Contact: React.FC = () => {
                   </div>
                   <div>
                     <p className="font-semibold">Email</p>
-                    <p className="text-gray-300">contato@supppower.com.br</p>
+                    <p className="text-gray-300">suppowervitaminas@gmail.com</p>
                   </div>
                 </div>
                 
