@@ -149,7 +149,7 @@ export const products: Product[] = [
     name: "Nutren Senior Baunilha 740g",
     price: 120.70,
     originalPrice: 142.00,
-    image: "https://www.nutricaoatevoce.com.br/media/catalog/product/cache/3f091c246aa3c76f3e4c9f2d55ddba5b/n/u/nutrenpremiumhero2.jpg",
+    image: "https://www.nutren.com.br/sites/default/files/2024-01/senior_sabor_baunilha_lata_740g.png",
     category: "Senior 50+",
     description: "Suplemento nutricional completo para adultos 50+ com sabor baunilha clássico. Fornece nutrientes essenciais para manter a vitalidade, força muscular e saúde óssea. Fórmula balanceada para o envelhecimento ativo e saudável.",
     benefits: ["Sabor baunilha", "Completo", "50+ anos", "Nutrição avançada"],
