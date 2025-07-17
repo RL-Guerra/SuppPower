@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
               Feito com <Heart className="text-red-500 mx-1" size={16} /> para atletas
             </p>
             <p className="text-sm text-gray-500 mt-1">
-              © 2025 SuppPower. Todos os direitos reservados.
+              © 2025 SuppPower. Todos os direitos reservados. TRESTE
             </p>
           </div>
         </div>
