@@ -212,7 +212,7 @@ export const products: Product[] = [
     name: "Sundown Vitamina E 1001ui 30 cápsulas",
     price: 94.50,
     originalPrice: 105.00,
-    image: "https://www.nutricaoatevoce.com.br/media/catalog/product/cache/3f091c246aa3c76f3e4c9f2d55ddba5b/1/2/12532811_1.jpg",
+    image: "https://tse3.mm.bing.net/th/id/OIP.bZJEhTXP00Y9oR_o6anjBwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
     category: "Vitaminas",
     description: "Vitamina E com potente ação antioxidante, protege células contra radicais livres, promove saúde da pele, fortalece o sistema nervoso e contribui para o anti-envelhecimento natural.",
     benefits: ["Antioxidante", "Protege células", "Saúde da pele", "Sistema nervoso"],
