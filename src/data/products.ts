@@ -186,7 +186,7 @@ export const products: Product[] = [
     name: "Sundown Ômega 3 Plus 120 cápsulas",
     price: 168.00,
     originalPrice: 210.00,
-    image: "https://dmvfarma.vtexassets.com/arquivos/ids/257381-800-auto?aspect=true&height=auto&v=638621039452030000&width=800",
+    image: "",
     category: "Ômega 3",
     description: "Versão plus com 120 cápsulas de ômega 3 concentrado, ideal para tratamento prolongado, oferece máxima eficácia na proteção cardiovascular e melhoria das funções cognitivas.",
     benefits: ["Versão Plus", "120 cápsulas", "Tratamento longo", "Máxima eficácia"],
