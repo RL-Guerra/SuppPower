@@ -75,7 +75,7 @@ export const products: Product[] = [
     name: "Nutren Senior Sem Sabor 740g",
     price: 120.70,
     originalPrice: 142.00,
-    image: "https://drogal.vtexassets.com/arquivos/ids/250219/131523.jpg?v=638773839482270000",
+    image: "https://images.tcdn.com.br/img/img_prod/1189842/complemento_alimentar_nutren_senior_50_sem_sabor_zero_lactose_740g_1465_2_3be2481aafa37afab8b4d9c1a4bed889.jpg",
     category: "Senior 50+",
     description: "Suplemento completo com cálcio, proteínas de alta qualidade e vitamina D para manutenção da massa muscular e óssea, fortalece o sistema imune e proporciona mais vitalidade.",
     benefits: ["Massa muscular", "Sistema imune", "Vitalidade", "Disposição"],
