@@ -20,7 +20,7 @@ export const products: Product[] = [
     name: "Nutren Protein Baunilha 800g",
     price: 127.50,
     originalPrice: 150.00,
-    image: "https://www.drogaraia.com.br/_next/image?q=40&url=https%3A%2F%2Fproduct-data.raiadrogasil.io%2Fimages%2F13239660.webp&w=3840",
+    image: "https://tse3.mm.bing.net/th/id/OIP.kVGLFz8_cfJBI5VWAzZZCwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
     category: "Proteína",
     description: "Suplemento proteico completo que aumenta o metabolismo energético, fortalece músculos e ossos, proporciona mais força e energia para o dia a dia e atividades físicas.",
     benefits: ["Fortalece músculos e ossos", "Combate a fadiga", "Auxilia perda de peso", "Hidratação da pele"],
