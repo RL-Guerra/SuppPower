@@ -96,7 +96,7 @@ export const products: Product[] = [
   },
   {
     id: 8,
-    name: "Nutren Senior Baunilha Zero Lactose 740g",
+    name: "Nutren Senior Baunilha Zero Lactose 740g TESTE",
     price: 132.60,
     originalPrice: 156.00,
     image: "https://product-data.raiadrogasil.io/images/13257263.webp",
