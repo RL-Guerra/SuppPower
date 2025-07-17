@@ -99,7 +99,7 @@ export const products: Product[] = [
     name: "Nutren Senior Baunilha Zero Lactose 740g",
     price: 132.60,
     originalPrice: 156.00,
-    image: "https://a-static.mlcdn.com.br/800x560/nutren-senior-baunilha-zero-lactose-740g/drogal/9991741/a6370e8beed951716d361f0a4702764b.jpeg",
+    image: "https://drogariavenancio.vtexassets.com/arquivos/ids/1015879-800-auto?v=637998092732970000&width=800&height=auto&aspect=true",
     category: "Senior 50+",
     description: "Suplemento completo 6 em 1 com proteínas de alta qualidade, colágeno hidrolisado, ômega 3 e nutrientes essenciais para adultos 50+, zero lactose para melhor digestibilidade.",
     benefits: ["6 em 1", "Colágeno", "Ômega 3", "Zero lactose"],
