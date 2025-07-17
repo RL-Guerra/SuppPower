@@ -174,7 +174,7 @@ export const products: Product[] = [
     name: "Sundown Ômega 3 1000mg 120 cápsulas",
     price: 91.80,
     originalPrice: 102.00,
-    image: "https://i5.walmartimages.com/seo/Sundown-Omega-3-Fish-Oil-1000-Mg-Softgels-120-Ct_9129ca15-407b-4f42-88d3-699143e5b4e6.d3c11c9d7627dc89c0a20410d6aebc7f.jpeg",
+    image: "https://tse1.mm.bing.net/th/id/OIP.-2Bw4y7KJrgiaFChoDru6gHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
     category: "Ômega 3",
     description: "Óleo de peixe concentrado que promove saúde cardiovascular, possui potente ação anti-inflamatória e oferece benefícios comprovados para saúde cerebral, ocular e fornece energia natural.",
     benefits: ["Anti-inflamatório", "Saúde cerebral", "Saúde ocular", "Energia"],
