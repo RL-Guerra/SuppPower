@@ -123,7 +123,7 @@ export const products: Product[] = [
     name: "Nutren Senior Premium Baunilha 370g",
     price: 99.00,
     originalPrice: 110.00,
-    image: "https://www.nutricaoatevoce.com.br/media/catalog/product/cache/3f091c246aa3c76f3e4c9f2d55ddba5b/n/u/nutrenpremiumhero2.jpg",
+    image: "https://drogal.vtexassets.com/arquivos/ids/237577-800-600?v=638624340292400000&width=800&height=600&aspect=true",
     category: "Senior 50+",
     description: "Versão premium rica em proteínas de alta qualidade, cálcio, zinco, selênio e vitaminas C, D, B6, K e ácido fólico, formulação avançada para nutrição completa de adultos 50+.",
     benefits: ["Rico em proteínas", "Cálcio", "Zinco e selênio", "Vitaminas essenciais"],
