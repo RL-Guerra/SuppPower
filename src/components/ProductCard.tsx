@@ -41,7 +41,7 @@ export const products: Product[] = [
     category: "Fibras",
     description: "Regulador intestinal da Nestlé com fibras solúveis que ajudam no bom funcionamento do intestino. Contém colágeno para saúde da pele e sabor limão refrescante. Ideal para quem busca regularidade intestinal e melhora da saúde digestiva. Fórmula exclusiva que combina benefícios intestinais e estéticos.",
     benefits: ["Regulador intestinal", "Fibras solúveis", "Controle glicêmico", "Sabor limão"],
-    inStock: false,
+    inStock: true,
     featured: true,
     rating: 4.5
   },
