@@ -35,7 +35,7 @@ export const products: Product[] = [
     name: "Fibermais Colágeno Limão 300g",
     price: 103.50,
     originalPrice: 115.00,
-    image: "https://www.nestlehealthscience.com.br/sites/default/files/2024-02/frentelimaoresource_fibermaiscolageno12x300g_brrot_44277541_1.jpg",
+    image: "https://i3-imagens-prd.araujo.com.br/webp/89862/7891000256350_2.webp?sw=500&sh=500&sm=fit",
     category: "Fibras",
     description: "Regulador intestinal da Nestlé com fibras solúveis que ajudam no bom funcionamento do intestino, melhora a digestão e contribui para o controle glicêmico com sabor refrescante de limão.",
     benefits: ["Regulador intestinal", "Fibras solúveis", "Controle glicêmico", "Sabor limão"],
