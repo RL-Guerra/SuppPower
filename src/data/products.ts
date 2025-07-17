@@ -174,7 +174,7 @@ export const products: Product[] = [
     name: "Sundown Ômega 3 1000mg 120 cápsulas",
     price: 91.80,
     originalPrice: 102.00,
-    image: "",
+    image: "https://tse4.mm.bing.net/th/id/OIP.47garfjbhs7ttAD-Ygs75gHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
     category: "Ômega 3",
     description: "Óleo de peixe concentrado que promove saúde cardiovascular, possui potente ação anti-inflamatória e oferece benefícios comprovados para saúde cerebral, ocular e fornece energia natural.",
     benefits: ["Anti-inflamatório", "Saúde cerebral", "Saúde ocular", "Energia"],
