@@ -28,20 +28,22 @@ span:focus {
 /* Melhorar visualização das imagens dos produtos */
 .product-image {
   transition: transform 0.3s ease;
+  padding: 8px;
 }
 
 .product-image:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 /* Garantir que as imagens não sejam cortadas */
 .product-card {
-  min-height: 500px;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Responsividade para diferentes tamanhos de tela */
 @media (max-width: 768px) {
   .product-card {
-    min-height: 450px;
+    min-height: 550px;
   }
-}

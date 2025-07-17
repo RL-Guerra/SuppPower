@@ -295,12 +295,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }
   const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col h-full">
+    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col h-full product-card">
       <div className="relative">
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-48 object-cover"
+          className="w-full h-64 object-contain bg-gray-50 product-image"
         />
         {product.featured && (
           <span className="absolute top-2 left-2 bg-blue-600 text-white px-2 py-1 rounded-md text-xs font-semibold">
@@ -325,7 +325,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }
           {product.name}
         </h3>
         
-        <p className="text-gray-600 text-sm mb-3 flex-grow">
+        <p className="text-gray-600 text-sm mb-3 flex-grow leading-relaxed">
           {product.description}
         </p>
         
