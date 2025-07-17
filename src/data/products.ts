@@ -237,7 +237,7 @@ export const products: Product[] = [
     name: "Sundown Vitamina D 2000ui 200 cápsulas",
     price: 90.90,
     originalPrice: 101.00,
-    image: "https://images.tcdn.com.br/img/img_prod/738187/vitamina_d_2000ui_200_capsulas_sundown_naturals_1289_1_20200323102437.jpg",
+    image: "https://drogariaspacheco.vteximg.com.br/arquivos/ids/1343813-1000-1000/681830---Suplemento-Alimentar-Sundown-Vitamina-D-2.000-UI-200-Capsulas_0005_0.png?v=638629564376570000",
     category: "Vitaminas",
     description: "Vitamina D 2000ui que auxilia na absorção de cálcio e fósforo, regula células ósseas, mantém níveis adequados de cálcio no sangue e fortalece o sistema imunológico. 200 cápsulas.",
     benefits: ["Absorção cálcio", "Regula células ósseas", "Níveis de cálcio", "200 cápsulas"],
