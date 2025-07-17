@@ -263,7 +263,7 @@ export const products: Product[] = [
     name: "Colágeno Vital Proteins Original Sem Sabor 284g",
     price: 108.00,
     originalPrice: 120.00,
-    image: "https://www.nutricaoatevoce.com.br/media/catalog/product/cache/3f091c246aa3c76f3e4c9f2d55ddba5b/v/i/vital_proteins_sem_sab_284g_front.jpg",
+    image: "https://cdn1.staticpanvel.com.br/produtos/15/107627-15.jpg",
     category: "Colágeno",
     description: "Colágeno hidrolisado premium para recomposição de proteínas perdidas, proporciona firmeza e elasticidade para cabelos, pele, unhas e cartilagens, sem sabor para versatilidade total.",
     benefits: ["Recomposição proteínas", "Firmeza", "Elasticidade", "Cabelos, pele, unhas"],
