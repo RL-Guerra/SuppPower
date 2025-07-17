@@ -87,7 +87,7 @@ export const products: Product[] = [
     name: "Nutren Senior Café com Leite 740g",
     price: 120.70,
     originalPrice: 142.00,
-    image: "https://a-static.mlcdn.com.br/1500x1500/complemento-alimentar-nutren-cafe-com-leite-senior-370g/medicnutre/ed5b38a0c85511ebb40f4201ac18500e/be2847364a5e943ecd8e93fed2e37c78.jpg",
+    image: "https://www.nutrirmais.com.br/produtos/001150.jpg",
     category: "Senior 50+",
     description: "Desenvolvido especialmente para melhorar o estado nutricional, fortalecer ossos e músculos na melhor fase da vida, com delicioso sabor café com leite que proporciona energia e bem-estar.",
     benefits: ["Estado nutricional", "Fortalece ossos", "Energia", "Sabor café com leite"],
