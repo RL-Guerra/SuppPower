@@ -135,7 +135,7 @@ export const products: Product[] = [
     name: "Nutren Senior Mix de Frutas 740g",
     price: 120.70,
     originalPrice: 142.00,
-    image: "https://www.nutricaoatevoce.com.br/media/catalog/product/cache/3f091c246aa3c76f3e4c9f2d55ddba5b/n/u/nutren-mix-frutas---hero_v21.jpg",
+    image: "https://drogal.vtexassets.com/arquivos/ids/237587-1200-900?v=638624340068370000&width=1200&height=900&aspect=true",
     category: "Senior 50+",
     description: "Suplemento nutritivo com cálcio, proteínas de qualidade e vitamina D, contribui para um melhor bem-estar geral, com delicioso sabor mix de frutas que pode ser consumido a qualquer momento.",
     benefits: ["Mix de frutas", "Melhor estar", "Qualquer momento", "Cálcio e vitamina D"],
