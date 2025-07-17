@@ -161,7 +161,7 @@ export const products: Product[] = [
     name: "Sundown Ômega 3 Plus 1000mg 60 cápsulas",
     price: 125.80,
     originalPrice: 148.00,
-    image: "https://drogariavenancio.vtexassets.com/arquivos/ids/1078912-800-450?aspect=true&height=450&v=638351342641970000&width=800",
+    image: "https://tse2.mm.bing.net/th/id/OIP.gN5Q7kmqQtJMlFKp3bqCIwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
     category: "Ômega 3",
     description: "Suplemento premium de ômega 3 que auxilia no controle de triglicérides, melhora o colesterol bom, promove saúde cardiovascular e contribui significativamente para melhoria da memória e função cerebral.",
     benefits: ["Controla triglicérides", "Colesterol bom", "Saúde cardiovascular", "Melhora memória"],
