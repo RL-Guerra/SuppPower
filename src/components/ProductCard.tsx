@@ -1,119 +1,273 @@
-import React from 'react';
-import { ShoppingCart, Star } from 'lucide-react';
 import { Product } from '../types';
 
-interface ProductCardProps {
-  product: Product;
-  onAddToCart: (product: Product) => void;
-}
+export const products: Product[] = [
+  // Proteínas
+  {
+    id: 1,
+    name: "Nutren Just Protein 280g",
+    price: 87.00,
+    originalPrice: 100.00,
+    image: "https://www.nestlehealthscience.com.br/sites/default/files/2024-04/nutren_just_protein_280g_frente.jpg",
+    category: "Proteína",
+    description: "Suplemento alimentar em pó feito com 100% de whey protein isolado, enriquecido com 20 vitaminas e minerais essenciais. Ideal para auxiliar na formação muscular, recuperação pós-treino e manutenção da massa magra.",
+    benefits: ["100% Whey Protein Isolado", "20 vitaminas e minerais", "Auxilia formação muscular", "Recuperação e manutenção"],
+    inStock: true,
+    featured: true,
+    rating: 4.7
+  },
+  {
+    id: 2,
+    name: "Nutren Protein Baunilha 800g",
+    price: 127.50,
+    originalPrice: 150.00,
+    image: "https://www.drogaraia.com.br/_next/image?q=40&url=https%3A%2F%2Fproduct-data.raiadrogasil.io%2Fimages%2F13239660.webp&w=3840",
+    category: "Proteína",
+    description: "Suplemento proteico completo que aumenta o metabolismo energético, fortalece músculos e ossos, proporcionando mais força e energia para suas atividades diárias. Rico em proteínas de alta qualidade.",
+    benefits: ["Fortalece músculos e ossos", "Combate a fadiga", "Auxilia perda de peso", "Hidratação da pele"],
+    inStock: true,
+    featured: true,
+    rating: 4.9
+  },
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
-  const discount = product.originalPrice 
-    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
-    : 0;
+  // Fibras
+  {
+    id: 3,
+    name: "Fibermais Colágeno Limão 300g",
+    price: 103.50,
+    originalPrice: 115.00,
+    image: "https://www.nestlehealthscience.com.br/sites/default/files/2024-02/frentelimaoresource_fibermaiscolageno12x300g_brrot_44277541_1.jpg",
+    category: "Fibras",
+    description: "Regulador intestinal da Nestlé com fibras solúveis que ajudam no bom funcionamento do intestino. Contém colágeno para saúde da pele e sabor limão refrescante. Ideal para quem busca regularidade intestinal.",
+    benefits: ["Regulador intestinal", "Fibras solúveis", "Controle glicêmico", "Sabor limão"],
+    inStock: true,
+    featured: true,
+    rating: 4.5
+  },
+  {
+    id: 4,
+    name: "Fibermais Sem Sabor 260g",
+    price: 89.10,
+    originalPrice: 99.00,
+    image: "https://http2.mlstatic.com/D_NQ_NP_604225-MLB40766444839_022020-F.jpg",
+    category: "Fibras",
+    description: "Acelera o crescimento de bactérias benéficas no intestino, promovendo uma flora intestinal saudável. Sem sabor, pode ser facilmente adicionado a alimentos e bebidas sem alterar o gosto.",
+    benefits: ["Bactérias benéficas", "Sem alterar sabor", "Sistema digestivo", "Versátil"],
+    inStock: true,
+    rating: 4.3
+  },
 
-  return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-      <div className="relative">
-        <img 
-          src={product.image} 
-          alt={product.name}
-          className="w-full h-80 object-contain bg-white p-4"
-        />
-        {product.featured && (
-          <div className="absolute top-3 left-3 bg-orange-500 text-white px-2 py-1 rounded-full text-sm font-semibold">
-            Destaque
-          </div>
-        )}
-        {discount > 0 && (
-          <div className="absolute top-3 right-3 bg-red-500 text-white px-2 py-1 rounded-full text-sm font-semibold">
-            -{discount}%
-          </div>
-        )}
-        {!product.inStock && (
-          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-            <span className="text-white font-semibold text-lg">Esgotado</span>
-          </div>
-        )}
-      </div>
-      
-      <div className="p-4">
-        <div className="text-sm text-orange-500 font-semibold mb-2">{product.category}</div>
-        <h3 className="text-lg font-bold text-gray-800 mb-2 min-h-[3rem] leading-tight">{product.name}</h3>
-        <p className="text-gray-600 mb-3 text-sm line-clamp-2">{product.description}</p>
-        
-        <div className="flex items-center mb-3">
-          {(() => {
-            const fullStars = Math.floor(product.rating);
-            const hasHalfStar = product.rating % 1 !== 0;
-            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-            
-            return (
-              <>
-                {/* Estrelas cheias */}
-                {[...Array(fullStars)].map((_, i) => (
-                  <Star 
-                    key={`full-${i}`} 
-                    size={16} 
-                    className="text-yellow-400 fill-current" 
-                  />
-                ))}
-                
-                {/* Meia estrela */}
-                {hasHalfStar && (
-                  <div key="half" className="relative">
-                    <Star size={16} className="text-gray-300" />
-                    <div 
-                      className="absolute top-0 left-0 overflow-hidden"
-                      style={{ width: '50%' }}
-                    >
-                      <Star size={16} className="text-yellow-400 fill-current" />
-                    </div>
-                  </div>
-                )}
-                
-                {/* Estrelas vazias */}
-                {[...Array(emptyStars)].map((_, i) => (
-                  <Star 
-                    key={`empty-${i}`} 
-                    size={16} 
-                    className="text-gray-300" 
-                  />
-                ))}
-              </>
-            );
-          })()}
-          <span className="text-gray-500 text-sm ml-2">({product.rating})</span>
-        </div>
-        
-        <div className="flex flex-wrap gap-1 mb-3">
-          {product.benefits.slice(0, 2).map((benefit, index) => (
-            <span key={index} className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs leading-tight">
-              {benefit}
-            </span>
-          ))}
-        </div>
-        
-        <div className="flex items-center justify-between">
-          <div>
-            {product.originalPrice && (
-              <span className="text-gray-400 line-through text-sm mr-2">
-                R$ {product.originalPrice.toFixed(2)}
-              </span>
-            )}
-            <span className="text-xl font-bold text-gray-800">
-              R$ {product.price.toFixed(2)}
-            </span>
-          </div>
-          <button
-            onClick={() => onAddToCart(product)}
-            disabled={!product.inStock}
-            className="bg-orange-500 hover:bg-orange-600 disabled:bg-gray-400 text-white p-3 rounded-lg transition-colors flex items-center justify-center"
-          >
-            <ShoppingCart size={20} />
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
+  // Nutren Senior
+  {
+    id: 5,
+    name: "Nutren Senior Chocolate 740g",
+    price: 120.70,
+    originalPrice: 142.00,
+    image: "https://drogariavenancio.vtexassets.com/arquivos/ids/1147630/76680_2.jpg?v=638519926617570000",
+    category: "Senior 50+",
+    description: "Complemento alimentar especialmente desenvolvido para adultos acima de 50 anos. Rico em cálcio e vitamina D, melhora a mobilidade, fortalece os ossos e contribui para um envelhecimento saudável e ativo.",
+    benefits: ["Cálcio e Vitamina D", "Melhora mobilidade", "Saúde dos ossos", "50+ anos"],
+    inStock: true,
+    featured: true,
+    rating: 4.8
+  },
+  {
+    id: 6,
+    name: "Nutren Senior Sem Sabor 740g",
+    price: 120.70,
+    originalPrice: 142.00,
+    image: "https://drogal.vtexassets.com/arquivos/ids/250219/131523.jpg?v=638773839482270000",
+    category: "Senior 50+",
+    description: "Suplemento completo com cálcio, proteínas de alta qualidade e vitamina D para manutenção da massa muscular e óssea. Fortalece o sistema imune e proporciona mais vitalidade e disposição no dia a dia.",
+    benefits: ["Massa muscular", "Sistema imune", "Vitalidade", "Disposição"],
+    inStock: true,
+    rating: 4.6
+  },
+  {
+    id: 7,
+    name: "Nutren Senior Café com Leite 740g",
+    price: 120.70,
+    originalPrice: 142.00,
+    image: "https://a-static.mlcdn.com.br/800x560/nutren-senior-suplemento-alimentar-cafe-com-leite-740g/olistplus/opmdn6h2n8rtel7r/30fec9acb1345ea82aef58ebccc507be.jpeg",
+    category: "Senior 50+",
+    description: "Desenvolvido especialmente para melhorar o estado nutricional de adultos 50+. Fortalece ossos e músculos, proporcionando energia e vitalidade para aproveitar a melhor fase da vida com sabor café com leite.",
+    benefits: ["Estado nutricional", "Fortalece ossos", "Energia", "Sabor café com leite"],
+    inStock: true,
+    rating: 4.4
+  },
+  {
+    id: 8,
+    name: "Nutren Senior Baunilha Zero Lactose 740g",
+    price: 132.60,
+    originalPrice: 156.00,
+    image: "https://product-data.raiadrogasil.io/images/13257263.webp",
+    category: "Senior 50+",
+    description: "Suplemento completo 6 em 1 com proteínas, colágeno, ômega 3 e nutrientes essenciais para adultos 50+. Zero lactose, ideal para quem tem intolerância. Fórmula avançada para nutrição completa.",
+    benefits: ["6 em 1", "Colágeno", "Ômega 3", "Zero lactose"],
+    inStock: true,
+    rating: 4.7
+  },
+  {
+    id: 9,
+    name: "Kit Nutren Senior Sem Sabor 740g - 2 unidades",
+    price: 228.00,
+    originalPrice: 285.00,
+    image: "https://www.nutricaoatevoce.com.br/media/catalog/product/cache/3f091c246aa3c76f3e4c9f2d55ddba5b/n/u/nutren-senior-pack---hero1.jpg",
+    category: "Senior 50+",
+    description: "Kit econômico com 2 unidades do Nutren Senior. Contém mais de 20 vitaminas e minerais essenciais, complementando as necessidades nutricionais específicas de adultos 50+. Ótimo custo-benefício.",
+    benefits: ["2 unidades", "+20 vitaminas", "Células vermelhas", "Energia"],
+    inStock: true,
+    rating: 4.5
+  },
+  {
+    id: 10,
+    name: "Nutren Senior Premium Baunilha 370g",
+    price: 99.00,
+    originalPrice: 110.00,
+    image: "https://www.nutricaoatevoce.com.br/media/catalog/product/cache/3f091c246aa3c76f3e4c9f2d55ddba5b/n/u/nutrenpremiumhero2.jpg",
+    category: "Senior 50+",
+    description: "Versão premium rica em proteínas de alta qualidade, cálcio, zinco, selênio e vitaminas C, D, B6, K e ácido fólico. Fórmula concentrada para máxima absorção e eficácia nutricional.",
+    benefits: ["Rico em proteínas", "Cálcio", "Zinco e selênio", "Vitaminas essenciais"],
+    inStock: true,
+    rating: 4.6
+  },
+  {
+    id: 11,
+    name: "Nutren Senior Mix de Frutas 740g",
+    price: 120.70,
+    originalPrice: 142.00,
+    image: "https://www.nutricaoatevoce.com.br/media/catalog/product/cache/3f091c246aa3c76f3e4c9f2d55ddba5b/n/u/nutren-mix-frutas---hero_v21.jpg",
+    category: "Senior 50+",
+    description: "Suplemento com cálcio, proteínas e vitamina D que contribui para um melhor estar físico e mental. Delicioso sabor mix de frutas, pode ser consumido a qualquer momento do dia.",
+    benefits: ["Mix de frutas", "Melhor estar", "Qualquer momento", "Cálcio e vitamina D"],
+    inStock: true,
+    rating: 4.3
+  },
+  {
+    id: 12,
+    name: "Nutren Senior Baunilha 740g",
+    price: 120.70,
+    originalPrice: 142.00,
+    image: "https://www.nutricaoatevoce.com.br/media/catalog/product/cache/3f091c246aa3c76f3e4c9f2d55ddba5b/n/u/nutrenpremiumhero2.jpg",
+    category: "Senior 50+",
+    benefits: ["Sabor baunilha", "Completo", "50+ anos", "Nutrição avançada"],
+    inStock: true,
+    rating: 4.8
+  },
+
+  // Ômega 3
+  {
+    id: 13,
+    name: "Sundown Ômega 3 Plus 1000mg 60 cápsulas",
+    price: 125.80,
+    originalPrice: 148.00,
+    image: "https://drogariavenancio.vtexassets.com/arquivos/ids/1078912-800-450?aspect=true&height=450&v=638351342641970000&width=800",
+    category: "Ômega 3",
+    description: "Auxilia no controle de triglicérides, colesterol e melhoria da memória",
+    benefits: ["Controla triglicérides", "Colesterol bom", "Saúde cardiovascular", "Melhora memória"],
+    inStock: true,
+    featured: true,
+    rating: 4.9
+  },
+  {
+    id: 14,
+    name: "Sundown Ômega 3 1000mg 120 cápsulas",
+    price: 91.80,
+    originalPrice: 102.00,
+    image: "https://i5.walmartimages.com/seo/Sundown-Omega-3-Fish-Oil-1000-Mg-Softgels-120-Ct_9129ca15-407b-4f42-88d3-699143e5b4e6.d3c11c9d7627dc89c0a20410d6aebc7f.jpeg",
+    category: "Ômega 3",
+    description: "Saúde cardiovascular, ação anti-inflamatória, benefício para saúde cerebral e ocular",
+    benefits: ["Anti-inflamatório", "Saúde cerebral", "Saúde ocular", "Energia"],
+    inStock: true,
+    rating: 4.4
+  },
+  {
+    id: 15,
+    name: "Sundown Ômega 3 Plus 120 cápsulas",
+    price: 168.00,
+    originalPrice: 210.00,
+    image: "https://dmvfarma.vtexassets.com/arquivos/ids/257381-800-auto?aspect=true&height=auto&v=638621039452030000&width=800",
+    category: "Ômega 3",
+    description: "Versão plus com 120 cápsulas para tratamento prolongado",
+    benefits: ["Versão Plus", "120 cápsulas", "Tratamento longo", "Máxima eficácia"],
+    inStock: true,
+    rating: 4.7
+  },
+  {
+    id: 16,
+    name: "Sundown Ômega 3 1000mg 180 cápsulas",
+    price: 139.40,
+    originalPrice: 164.00,
+    image: "https://dmvfarma.vtexassets.com/arquivos/ids/257358/30768038489-SuplementoAlimentarSundownOmega-31000mg180Capsulas-1.jpg?v=638621039315100000",
+    category: "Ômega 3",
+    description: "Embalagem econômica com 180 cápsulas de ômega 3 1000mg",
+    benefits: ["180 cápsulas", "Econômico", "1000mg", "Longa duração"],
+    inStock: true,
+    rating: 4.5
+  },
+
+  // Vitaminas
+  {
+    id: 17,
+    name: "Sundown Vitamina E 1001ui 30 cápsulas",
+    price: 94.50,
+    originalPrice: 105.00,
+    image: "https://www.nutricaoatevoce.com.br/media/catalog/product/cache/3f091c246aa3c76f3e4c9f2d55ddba5b/1/2/12532811_1.jpg",
+    category: "Vitaminas",
+    description: "Ação antioxidante, protege células contra radicais livres, saúde da pele e sistema nervoso",
+    benefits: ["Antioxidante", "Protege células", "Saúde da pele", "Sistema nervoso"],
+    inStock: true,
+    rating: 4.3
+  },
+  {
+    id: 18,
+    name: "Sundown Vitamina C 1000mg 180 comprimidos",
+    price: 160.00,
+    originalPrice: 200.00,
+    image: "https://dmvfarma.vtexassets.com/arquivos/ids/257390/30768301576-SuplementoAlimentarSundownVitaminaC1000mg180Comprimidos-1.jpg?v=638621039532270000",
+    category: "Vitaminas",
+    description: "Auxilia sistema imune, formação do colágeno, absorção de ferro e previne anemia",
+    benefits: ["Sistema imune", "Formação colágeno", "Absorção ferro", "Previne anemia"],
+    inStock: true,
+    featured: true,
+    rating: 4.8
+  },
+  {
+    id: 19,
+    name: "Sundown Vitamina D 2000ui 200 cápsulas",
+    price: 90.90,
+    originalPrice: 101.00,
+    image: "https://images.tcdn.com.br/img/img_prod/738187/vitamina_d_2000ui_200_capsulas_sundown_naturals_1289_1_20200323102437.jpg",
+    category: "Vitaminas",
+    description: "Auxilia absorção de cálcio e fósforo, regula células ósseas, mantém níveis de cálcio no sangue",
+    benefits: ["Absorção cálcio", "Regula células ósseas", "Níveis de cálcio", "200 cápsulas"],
+    inStock: true,
+    rating: 4.6
+  },
+  {
+    id: 20,
+    name: "Sundown Vitamina E 400Ui 100 cápsulas",
+    price: 114.75,
+    originalPrice: 135.00,
+    image: "https://www.drogaraia.com.br/_next/image?url=https%3A%2F%2Fproduct-data.raiadrogasil.io%2Fimages%2F15203652.webp&w=3840&q=40",
+    category: "Vitaminas",
+    description: "Antioxidante, sistema imunológico, saúde da pele, cérebro, coração e circulação",
+    benefits: ["Sistema imunológico", "Saúde do cérebro", "Saúde do coração", "Circulação"],
+    inStock: true,
+    rating: 4.4
+  },
+
+  // Colágeno
+  {
+    id: 21,
+    name: "Colágeno Vital Proteins Original Sem Sabor 284g",
+    price: 108.00,
+    originalPrice: 120.00,
+    image: "https://www.nutricaoatevoce.com.br/media/catalog/product/cache/3f091c246aa3c76f3e4c9f2d55ddba5b/v/i/vital_proteins_sem_sab_284g_front.jpg",
+    category: "Colágeno",
+    description: "Recomposição de proteínas perdidas, firmeza e elasticidade para cabelos, pele, unhas e cartilagens",
+    benefits: ["Recomposição proteínas", "Firmeza", "Elasticidade", "Cabelos, pele, unhas"],
+    inStock: true,
+    featured: true,
+    rating: 4.7
+  }
+];
