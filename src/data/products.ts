@@ -48,7 +48,7 @@ export const products: Product[] = [
     name: "Fibermais Sem Sabor 260g",
     price: 89.10,
     originalPrice: 99.00,
-    image: "https://http2.mlstatic.com/D_NQ_NP_604225-MLB40766444839_022020-F.jpg",
+    image: "https://farmaconde.vtexassets.com/arquivos/ids/179576/fiber-mais-sem-sabor-lata-260g-860791-7891000058459.jpg?v=638199287205800000",
     category: "Fibras",
     description: "Acelera o crescimento de bactérias benéficas no intestino, pode ser facilmente adicionado a alimentos e bebidas sem alterar o sabor, promovendo saúde digestiva completa.",
     benefits: ["Bactérias benéficas", "Sem alterar sabor", "Sistema digestivo", "Versátil"],
