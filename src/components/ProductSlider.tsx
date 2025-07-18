@@ -12,18 +12,45 @@ export const ProductSlider: React.FC = () => {
       setCurrentIndex((prevIndex) => 
         prevIndex === featuredProducts.length - 1 ? 0 : prevIndex + 1
       );
-    }, 3000); // Muda a cada 3 segundos
+    }, 8000); // Muda a cada 8 segundos
 
     return () => clearInterval(interval);
   }, [featuredProducts.length]);
 
+  const scrollToProduct = (productId: number) => {
+    // Primeiro, navega para a seção de produtos
+    const productsSection = document.getElementById('products');
+    if (productsSection) {
+      productsSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+      
+      // Aguarda um pouco para a rolagem completar, então destaca o produto
+      setTimeout(() => {
+        const productCard = document.querySelector(`[data-product-id="${productId}"]`);
+        if (productCard) {
+          productCard.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'center'
+          });
+          
+          // Adiciona efeito de destaque temporário
+          productCard.classList.add('highlight-product');
+          setTimeout(() => {
+            productCard.classList.remove('highlight-product');
+          }, 3000);
+        }
+      }, 800);
+    }
+  };
   if (featuredProducts.length === 0) return null;
 
   return (
     <div className="relative w-full max-w-4xl mx-auto">
       <div className="overflow-hidden rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20">
         <div 
-          className="flex transition-transform duration-500 ease-in-out"
+          className="flex transition-transform duration-1000 ease-in-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {featuredProducts.map((product) => (
@@ -82,9 +109,13 @@ export const ProductSlider: React.FC = () => {
                   </div>
                   
                   <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105 flex items-center mx-auto md:mx-0">
-                    Ver Produto
-                    <ArrowRight className="ml-2" size={20} />
-                  </button>
+                    <button 
+                      onClick={() => scrollToProduct(product.id)}
+                      className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105 flex items-center mx-auto md:mx-0"
+                    >
+                      Ver Produto
+                      <ArrowRight className="ml-2" size={20} />
+                    </button>
                 </div>
               </div>
             </div>
