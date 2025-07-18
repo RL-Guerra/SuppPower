@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowRight, Zap, Shield, Trophy } from 'lucide-react';
+import { Zap, Shield, Trophy } from 'lucide-react';
+import { ProductSlider } from './ProductSlider';
 
 export const Hero: React.FC = () => {
   return (
@@ -13,14 +14,10 @@ export const Hero: React.FC = () => {
           <p className="text-xl md:text-2xl mb-8 text-gray-300">
             Suplementos de alta qualidade para atletas que buscam performance máxima
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center transition-all transform hover:scale-105">
-              Comprar Agora
-              <ArrowRight className="ml-2" size={20} />
-            </button>
-            <button className="border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white px-8 py-4 rounded-lg font-semibold transition-all">
-              Ver Produtos
-            </button>
+          
+          {/* Slider de Produtos em Destaque */}
+          <div className="mb-12">
+            <ProductSlider />
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
