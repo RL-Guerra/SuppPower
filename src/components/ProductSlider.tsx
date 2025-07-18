@@ -102,13 +102,7 @@ export const ProductSlider: React.FC = () => {
         ))}
       </div>
       
-      {/* Contador de produtos */}
-      <div className="text-center mt-4">
-        <span className="text-white/70 text-sm">
-          {currentIndex + 1} de {featuredProducts.length} produtos em destaque
-        </span>
-      </div>
-    </div>
+      
   );
 };
 
