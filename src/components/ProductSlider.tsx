@@ -81,10 +81,7 @@ export const ProductSlider: React.FC = () => {
                     )}
                   </div>
                   
-                  <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105 flex items-center mx-auto md:mx-0">
-                    Ver Produto
-                    <ArrowRight className="ml-2" size={20} />
-                  </button>
+                  
                 </div>
               </div>
             </div>
