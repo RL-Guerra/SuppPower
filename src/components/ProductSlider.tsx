@@ -121,6 +121,9 @@ export const ProductSlider: React.FC = () => {
             </div>
           ))}
         </div>
+        )
+        )
+        }
       </div>
       
       {/* Indicadores */}
