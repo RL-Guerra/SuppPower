@@ -295,10 +295,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }
   const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
 
   return (
-    <div 
-      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col h-full product-card"
-      data-product-id={product.id}
-    >
+    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col h-full product-card">
       <div className="relative">
         <img
           src={product.image}
