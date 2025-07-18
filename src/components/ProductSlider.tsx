@@ -12,7 +12,7 @@ export const ProductSlider: React.FC = () => {
       setCurrentIndex((prevIndex) => 
         prevIndex === featuredProducts.length - 1 ? 0 : prevIndex + 1
       );
-    }, 5000); // Muda a cada 3 segundos
+    }, 4000); // Muda a cada 3 segundos
 
     return () => clearInterval(interval);
   }, [featuredProducts.length]);
