@@ -101,8 +101,7 @@ export const ProductSlider: React.FC = () => {
           />
         ))}
       </div>
-      
-      
+    </div>
   );
 };
 
