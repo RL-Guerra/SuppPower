@@ -56,7 +56,7 @@ export const ProductSlider: React.FC = () => {
                   </h3>
                   
                   <p className="text-gray-300 mb-6 leading-relaxed">
-                    {product.description.substring(0, 150)}...
+                    {product.description}
                   </p>
                   
                   <div className="flex flex-wrap gap-2 mb-6 justify-center md:justify-start">
@@ -80,8 +80,6 @@ export const ProductSlider: React.FC = () => {
                       </span>
                     )}
                   </div>
-                  
-                  
                 </div>
               </div>
             </div>
