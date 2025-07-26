@@ -233,7 +233,7 @@ export const Contact: React.FC = () => {
   };
 
   const handleInstagramClick = () => {
-    window.open('https://instagram.com/supppower', '_blank');
+    window.open('https://www.instagram.com/suppower_oficial?igsh=MXR2ZjBncm9vcGUydg==', '_blank');
   };
 
   const handleFacebookClick = () => {
