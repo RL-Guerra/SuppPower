@@ -551,7 +551,7 @@ export const Checkout: React.FC<CheckoutProps> = ({
               value={customer.phone}
               onChange={(e) => setCustomer({...customer, phone: e.target.value})}
               className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-              placeholder="(11) 99999-9999"
+              placeholder="(18) 98162-1064"
             />
           </div>
           
