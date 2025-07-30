@@ -368,7 +368,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }
           disabled={!product.inStock}
         >
           <ShoppingCart className="w-4 h-4" />
-          {product.inStock ? 'Adicionar ao Carrinho' : 'Fora de Estoque'}
+          {product.inStock ? 'Comprar Agora' : 'Fora de Estoque'}
         </button>
       </div>
     </div>
