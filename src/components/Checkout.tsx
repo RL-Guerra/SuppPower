@@ -4,6 +4,7 @@ import { CartItem, Customer } from '../types';
 import { sendOrderConfirmationEmail } from '../services/emailService';
 import { fetchAddressByCep, formatCep, validateCep } from '../services/viaCepService';
 import { processCardPayment } from '../services/paymentService';
+import { setupStonePayment } from '../services/stonePaymentService';
 
 interface CheckoutProps {
   items: CartItem[];
@@ -42,6 +43,7 @@ export const Checkout: React.FC<CheckoutProps> = ({
     name: '',
     email: '',
     phone: '',
+    cpf: '', // Adicionar CPF para Stone
     address: {
       street: '',
       number: '',
@@ -101,6 +103,142 @@ export const Checkout: React.FC<CheckoutProps> = ({
   };
 
   const handlePayment = async () => {
+    setPaymentError('');
+    setIsProcessingPayment(true);
+    
+    try {
+      let paymentSuccess = false;
+      
+      if (paymentMethod === 'card') {
+        // Validar dados do cartão antes de processar
+        const errors = validateCardDataWithErrors(cardData);
+        if (Object.values(errors).some(error => error !== '')) {
+          setCardErrors(errors);
+          setIsProcessingPayment(false);
+          return;
+        }
+        
+        // Processar pagamento com cartão via Stone
+        paymentSuccess = await processCardPayment({
+          cardData,
+          amount: total,
+          customer,
+          items
+        });
+      } else {
+        // Para PIX, simular confirmação após 2 segundos
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        paymentSuccess = true;
+      }
+      
+      if (paymentSuccess) {
+        const orderId = `PED${Date.now()}`;
+        
+        // Enviar email de confirmação
+        sendOrderConfirmationEmail({
+          customer,
+          items,
+          total,
+          orderId
+        }).then((success) => {
+          if (success) {
+            console.log('Email de confirmação enviado com sucesso!');
+          } else {
+            console.log('Erro ao enviar email de confirmação');
+          }
+        });
+        
+        setStep('success');
+        setTimeout(() => {
+          onClearCart();
+          onClose();
+        }, 5000);
+      }
+      
+    } catch (error: any) {
+      console.error('Erro no pagamento:', error);
+      setPaymentError(error.message || 'Erro no processamento do pagamento. Tente novamente.');
+    } finally {
+      setIsProcessingPayment(false);
+    }
+  };
+
+  // Função para formatar CPF
+  const formatCpf = (value: string) => {
+    const v = value.replace(/\D/g, '');
+    if (v.length <= 11) {
+      return v.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+    }
+    return value;
+  };
+
+  // Função para validar CPF
+  const validateCpf = (cpf: string): boolean => {
+    const cleanCpf = cpf.replace(/\D/g, '');
+    
+    if (cleanCpf.length !== 11) return false;
+    if (/^(\d)\1{10}$/.test(cleanCpf)) return false; // CPFs com todos os dígitos iguais
+    
+    // Validação do algoritmo do CPF
+    let sum = 0;
+    for (let i = 0; i < 9; i++) {
+      sum += parseInt(cleanCpf.charAt(i)) * (10 - i);
+    }
+    let remainder = (sum * 10) % 11;
+    if (remainder === 10 || remainder === 11) remainder = 0;
+    if (remainder !== parseInt(cleanCpf.charAt(9))) return false;
+    
+    sum = 0;
+    for (let i = 0; i < 10; i++) {
+      sum += parseInt(cleanCpf.charAt(i)) * (11 - i);
+    }
+    remainder = (sum * 10) % 11;
+    if (remainder === 10 || remainder === 11) remainder = 0;
+    if (remainder !== parseInt(cleanCpf.charAt(10))) return false;
+    
+    return true;
+  };
+
+  // Mostrar instruções de configuração da Stone no console
+  React.useEffect(() => {
+    if (process.env.NODE_ENV === 'development') {
+      setupStonePayment();
+    }
+  }, []);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateCep(customer.address.cep)) {
+      setCepError('Por favor, insira um CEP válido');
+      return;
+    }
+    
+    if (!validateCpf(customer.cpf)) {
+      alert('Por favor, insira um CPF válido');
+      return;
+    }
+    
+    setStep('payment');
+  };
+
+  const handleCpfChange = (value: string) => {
+    const formattedCpf = formatCpf(value);
+    setCustomer({ ...customer, cpf: formattedCpf });
+  };
+
+  const handleSubmitOriginal = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateCep(customer.address.cep)) {
+      setCepError('Por favor, insira um CEP válido');
+      return;
+    }
+    
+    setStep('payment');
+  };
+
+  const handlePaymentOriginal = async () => {
     setPaymentError('');
     setIsProcessingPayment(true);
     
@@ -552,6 +690,21 @@ export const Checkout: React.FC<CheckoutProps> = ({
               onChange={(e) => setCustomer({...customer, phone: e.target.value})}
               className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               placeholder="(18) 98162-1064"
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              CPF *
+            </label>
+            <input
+              type="text"
+              required
+              value={customer.cpf}
+              onChange={(e) => handleCpfChange(e.target.value)}
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+              placeholder="000.000.000-00"
+              maxLength={14}
             />
           </div>
           

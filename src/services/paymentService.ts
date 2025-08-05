@@ -1,4 +1,5 @@
 import { CartItem, Customer } from '../types';
+import { processStonePayment } from './stonePaymentService';
 
 interface CardData {
   number: string;
@@ -24,37 +25,20 @@ const PAYMENT_CONFIG = {
 
 export const processCardPayment = async (paymentData: PaymentData): Promise<boolean> => {
   try {
-    console.log('=== PROCESSANDO PAGAMENTO COM CARTÃO ===');
-    console.log('Dados do pagamento:', {
-      amount: paymentData.amount,
-      customer: paymentData.customer.name,
-      email: paymentData.customer.email,
-      cardLastFour: paymentData.cardData.number.slice(-4),
-      items: paymentData.items.length
-    });
-
-    // Validar dados do cartão
-    if (!validateCardData(paymentData.cardData)) {
-      throw new Error('Dados do cartão inválidos');
-    }
-
-    // Simular processamento (em produção, integre com gateway real)
-    await simulatePaymentProcessing(paymentData);
-
-    // Em produção, descomente e configure com seu gateway:
-    /*
-    const paymentResult = await processRealPayment(paymentData);
+    // Processar pagamento com Stone
+    const result = await processStonePayment(paymentData);
     
-    if (!paymentResult.success) {
-      throw new Error(paymentResult.error || 'Erro no processamento');
+    if (result.success) {
+      console.log('✅ Pagamento aprovado!', result.transactionId);
+      return true;
+    } else {
+      console.log('❌ Pagamento recusado:', result.error);
+      throw new Error(result.error || 'Pagamento recusado');
     }
-    */
-
-    console.log('✅ Pagamento processado com sucesso!');
-    return true;
 
   } catch (error) {
     console.error('❌ Erro no processamento do pagamento:', error);
+    throw error; // Re-throw para o componente tratar
     return false;
   }
 };

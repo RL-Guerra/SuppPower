@@ -20,6 +20,7 @@ export interface Customer {
   name: string;
   email: string;
   phone: string;
+  cpf: string;
   address: {
     street: string;
     number: string;
