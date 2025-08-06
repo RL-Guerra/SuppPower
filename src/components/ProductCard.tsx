@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, ShoppingCart } from 'lucide-react';
+import { Star, CreditCard } from 'lucide-react';
 import { Product } from '../types';
 
 export const products: Product[] = [
@@ -277,10 +277,9 @@ export const products: Product[] = [
 
 interface ProductCardProps {
   product: Product;
-  onAddToCart: (product: Product) => void;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
@@ -294,6 +293,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }
 
   const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
 
+  const handleBuyNow = () => {
+    window.open(product.paymentLink, '_blank');
+  };
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col h-full product-card">
       <div className="relative">
@@ -363,12 +365,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }
         </div>
         
         <button
-          onClick={() => onAddToCart(product)}
-          className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center gap-2 font-medium"
+          onClick={handleBuyNow}
+          className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition-colors duration-200 flex items-center justify-center gap-2 font-medium"
           disabled={!product.inStock}
         >
-          <ShoppingCart className="w-4 h-4" />
-          {product.inStock ? 'Adicionar ao Carrinho' : 'Fora de Estoque'}
+          <CreditCard className="w-4 h-4" />
+          {product.inStock ? 'Comprar Agora' : 'Fora de Estoque'}
         </button>
       </div>
     </div>

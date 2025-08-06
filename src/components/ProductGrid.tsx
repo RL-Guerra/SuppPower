@@ -4,10 +4,9 @@ import { Product } from '../types';
 
 interface ProductGridProps {
   products: Product[];
-  onAddToCart: (product: Product) => void;
 }
 
-export const ProductGrid: React.FC<ProductGridProps> = ({ products, onAddToCart }) => {
+export const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('Todos');
   
   const categories = ['Todos', ...Array.from(new Set(products.map(p => p.category)))];
@@ -49,7 +48,6 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ products, onAddToCart 
             <ProductCard
               key={product.id}
               product={product}
-              onAddToCart={onAddToCart}
             />
           ))}
         </div>

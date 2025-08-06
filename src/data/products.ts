@@ -13,7 +13,8 @@ export const products: Product[] = [
     benefits: ["100% Whey Protein Isolado", "20 vitaminas e minerais", "Auxilia formação muscular", "Recuperação e manutenção"],
     inStock: true,
     featured: true,
-    rating: 4.7
+    rating: 4.7,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_39gkxYPlOX7vwWjfli1QvodpGN6zVZea"
   },
   {
     id: 2,
@@ -26,7 +27,8 @@ export const products: Product[] = [
     benefits: ["Fortalece músculos e ossos", "Combate a fadiga", "Auxilia perda de peso", "Hidratação da pele"],
     inStock: true,
     featured: true,
-    rating: 4.9
+    rating: 4.9,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_QVwAYzGDjXM8VYvSRvTNGe3qEZ2Bynak"
   },
 
   // Fibras
@@ -41,7 +43,8 @@ export const products: Product[] = [
     benefits: ["Regulador intestinal", "Fibras solúveis", "Controle glicêmico", "Sabor limão"],
     inStock: true,
     featured: true,
-    rating: 4.5
+    rating: 4.5,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_mzKonELQDdGWZEEcmGHpoNxqB2R364we"
   },
   {
     id: 4,
@@ -53,7 +56,8 @@ export const products: Product[] = [
     description: "Acelera o crescimento de bactérias benéficas no intestino, pode ser facilmente adicionado a alimentos e bebidas sem alterar o sabor, promovendo saúde digestiva completa.",
     benefits: ["Bactérias benéficas", "Sem alterar sabor", "Sistema digestivo", "Versátil"],
     inStock: true,
-    rating: 4.3
+    rating: 4.3,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_mXrJGPgdDNvoYdwBcZFpbBz87Q9xOA43"
   },
 
   // Nutren Senior
@@ -68,7 +72,8 @@ export const products: Product[] = [
     benefits: ["Cálcio e Vitamina D", "Melhora mobilidade", "Saúde dos ossos", "50+ anos"],
     inStock: true,
     featured: true,
-    rating: 4.8
+    rating: 4.8,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_6rgm47OVE35wEB3hm7S5pGnKyBN8W9j1"
   },
   {
     id: 6,
@@ -80,7 +85,8 @@ export const products: Product[] = [
     description: "Suplemento completo com cálcio, proteínas de alta qualidade e vitamina D para manutenção da massa muscular e óssea, fortalece o sistema imune e proporciona mais vitalidade.",
     benefits: ["Massa muscular", "Sistema imune", "Vitalidade", "Disposição"],
     inStock: true,
-    rating: 4.6
+    rating: 4.6,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_g9zNA2o1Dm5M1gkuQmCGe3XwaQPZbJ0x"
   },
   {
     id: 7,
@@ -92,7 +98,8 @@ export const products: Product[] = [
     description: "Desenvolvido especialmente para melhorar o estado nutricional, fortalecer ossos e músculos na melhor fase da vida, com delicioso sabor café com leite que proporciona energia e bem-estar.",
     benefits: ["Estado nutricional", "Fortalece ossos", "Energia", "Sabor café com leite"],
     inStock: true,
-    rating: 4.4
+    rating: 4.4,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_O3X45P708plW6giZ1cggzdrAe9MwYDyk"
   },
   {
     id: 8,
@@ -104,7 +111,8 @@ export const products: Product[] = [
     description: "Suplemento completo 6 em 1 com proteínas de alta qualidade, colágeno hidrolisado, ômega 3 e nutrientes essenciais para adultos 50+, zero lactose para melhor digestibilidade.",
     benefits: ["6 em 1", "Colágeno", "Ômega 3", "Zero lactose"],
     inStock: true,
-    rating: 4.7
+    rating: 4.7,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_NdBvrjyDq2Q3raCNMuKRmo96VGkO5YMK"
   },
   {
     id: 9,
@@ -116,7 +124,8 @@ export const products: Product[] = [
     description: "Kit econômico com 2 unidades do Nutren Senior. Contém mais de 20 vitaminas e minerais essenciais complementando as necessidades nutricionais específicas de adultos maduros.",
     benefits: ["2 unidades", "+20 vitaminas", "Células vermelhas", "Energia"],
     inStock: true,
-    rating: 4.5
+    rating: 4.5,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_YVzxEanDW5oMODLSQdfZrp9k6O2JQ3jy"
   },
   {
     id: 10,
@@ -128,7 +137,8 @@ export const products: Product[] = [
     description: "Versão premium rica em proteínas de alta qualidade, cálcio, zinco, selênio e vitaminas C, D, B6, K e ácido fólico, formulação avançada para nutrição completa de adultos 50+.",
     benefits: ["Rico em proteínas", "Cálcio", "Zinco e selênio", "Vitaminas essenciais"],
     inStock: true,
-    rating: 4.6
+    rating: 4.6,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_aOJg1knyjAWKBOLUb5cW6MVYNz7DbP9q"
   },
   {
     id: 11,
@@ -140,7 +150,8 @@ export const products: Product[] = [
     description: "Suplemento nutritivo com cálcio, proteínas de qualidade e vitamina D, contribui para um melhor bem-estar geral, com delicioso sabor mix de frutas que pode ser consumido a qualquer momento.",
     benefits: ["Mix de frutas", "Melhor estar", "Qualquer momento", "Cálcio e vitamina D"],
     inStock: true,
-    rating: 4.3
+    rating: 4.3,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_vJbgP2ABo143jNrUozFmj6Km7yXDzdVL"
   },
   {
     id: 12,
@@ -152,7 +163,8 @@ export const products: Product[] = [
     description: "Complemento alimentar completo especialmente formulado para adultos 50+ com delicioso sabor baunilha, oferece nutrição avançada para um envelhecimento ativo e saudável.",
     benefits: ["Sabor baunilha", "Completo", "50+ anos", "Nutrição avançada"],
     inStock: true,
-    rating: 4.8
+    rating: 4.8,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_mlxo8XdyLZ9boalHWKIA61K5AgRew4E2"
   },
 
   // Ômega 3
@@ -167,7 +179,8 @@ export const products: Product[] = [
     benefits: ["Controla triglicérides", "Colesterol bom", "Saúde cardiovascular", "Melhora memória"],
     inStock: true,
     featured: true,
-    rating: 4.9
+    rating: 4.9,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_qGpLvlQj1X0P2jFjnUQOPm2d58DNOakM"
   },
   {
     id: 14,
@@ -179,7 +192,8 @@ export const products: Product[] = [
     description: "Óleo de peixe concentrado que promove saúde cardiovascular, possui potente ação anti-inflamatória e oferece benefícios comprovados para saúde cerebral, ocular e fornece energia natural.",
     benefits: ["Anti-inflamatório", "Saúde cerebral", "Saúde ocular", "Energia"],
     inStock: true,
-    rating: 4.4
+    rating: 4.4,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_qXlDRGKa9g4NR8PFXJCAvo2A1P8wQznV"
   },
   {
     id: 15,
@@ -191,7 +205,8 @@ export const products: Product[] = [
     description: "Versão plus com 120 cápsulas de ômega 3 concentrado, ideal para tratamento prolongado, oferece máxima eficácia na proteção cardiovascular e melhoria das funções cognitivas.",
     benefits: ["Versão Plus", "120 cápsulas", "Tratamento longo", "Máxima eficácia"],
     inStock: true,
-    rating: 4.7
+    rating: 4.7,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_GPoD2a07ZlEJ8ZbEIMuq8BNYRdKxA3bk"
   },
   {
     id: 16,
@@ -203,7 +218,8 @@ export const products: Product[] = [
     description: "Embalagem econômica com 180 cápsulas de ômega 3 1000mg cada, oferece excelente custo-benefício para uso contínuo, garantindo todos os benefícios por longa duração.",
     benefits: ["180 cápsulas", "Econômico", "1000mg", "Longa duração"],
     inStock: true,
-    rating: 4.5
+    rating: 4.5,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_op3AE1dvKXZwkpiVMFqBGDVlam5BjW6z"
   },
 
   // Vitaminas
@@ -217,7 +233,8 @@ export const products: Product[] = [
     description: "Vitamina E com potente ação antioxidante, protege células contra radicais livres, promove saúde da pele, fortalece o sistema nervoso e contribui para o anti-envelhecimento natural.",
     benefits: ["Antioxidante", "Protege células", "Saúde da pele", "Sistema nervoso"],
     inStock: true,
-    rating: 4.3
+    rating: 4.3,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_5m9AnDrx4a0oeEeUKdSG6okwbYqZgJXp"
   },
   {
     id: 18,
@@ -230,7 +247,8 @@ export const products: Product[] = [
     benefits: ["Sistema imune", "Formação colágeno", "Absorção ferro", "Previne anemia"],
     inStock: true,
     featured: true,
-    rating: 4.8
+    rating: 4.8,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_OkZ7WQLl5xKP3gdSeCKYydbG04qea6Vo"
   },
   {
     id: 19,
@@ -242,7 +260,8 @@ export const products: Product[] = [
     description: "Vitamina D 2000ui que auxilia na absorção de cálcio e fósforo, regula células ósseas, mantém níveis adequados de cálcio no sangue e fortalece o sistema imunológico. 200 cápsulas.",
     benefits: ["Absorção cálcio", "Regula células ósseas", "Níveis de cálcio", "200 cápsulas"],
     inStock: true,
-    rating: 4.6
+    rating: 4.6,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_6BLX82Opzdag4vju06Ip2wZnjylWmRNG"
   },
   {
     id: 20,
@@ -254,7 +273,8 @@ export const products: Product[] = [
     description: "Vitamina E 400ui com ação antioxidante poderosa, fortalece sistema imunológico, promove saúde da pele, protege cérebro e coração, melhora circulação sanguínea e combate o envelhecimento.",
     benefits: ["Sistema imunológico", "Saúde do cérebro", "Saúde do coração", "Circulação"],
     inStock: true,
-    rating: 4.4
+    rating: 4.4,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_9mJgMwy5Q6ZzlWqUJ6FQ70nXokjpVeLR"
   },
 
   // Colágeno
@@ -269,6 +289,7 @@ export const products: Product[] = [
     benefits: ["Recomposição proteínas", "Firmeza", "Elasticidade", "Cabelos, pele, unhas"],
     inStock: true,
     featured: true,
-    rating: 4.7
+    rating: 4.7,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_PeR1YAlzbk9qr3Ju2eFRgD28NVpLaX5Q"
   }
 ];

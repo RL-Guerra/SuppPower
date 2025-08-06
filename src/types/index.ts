@@ -10,6 +10,7 @@ export interface Product {
   inStock: boolean;
   featured?: boolean;
   rating: number;
+  paymentLink: string;
 }
 
 export interface CartItem extends Product {
