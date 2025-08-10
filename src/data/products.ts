@@ -268,7 +268,7 @@ export const products: Product[] = [
     name: "Sundown Vitamina E 400Ui 100 cápsulas",
     price: 114.75,
     originalPrice: 135.00,
-    image: "",
+    image: "https://a-static.mlcdn.com.br/800x560/suplemento-alimentar-vitamina-e-400ui-sundown-naturals-30-capsulas-softgel-sundown-nutrition/resilifarmaoficial/30768026417/097f3093f7b89a1c1bb53e58477ac04e.jpeg",
     category: "Vitaminas",
     description: "Vitamina E 400ui com ação antioxidante poderosa, fortalece sistema imunológico, promove saúde da pele, protege cérebro e coração, melhora circulação sanguínea e combate o envelhecimento.",
     benefits: ["Sistema imunológico", "Saúde do cérebro", "Saúde do coração", "Circulação"],
