@@ -213,7 +213,7 @@ export const products: Product[] = [
     name: "Sundown Ômega 3 1000mg 180 cápsulas",
     price: 139.40,
     originalPrice: 164.00,
-    image: "https://a-static.mlcdn.com.br/800x560/suplemento-alimentar-vitamina-e-400ui-sundown-naturals-30-capsulas-softgel-sundown-nutrition/resilifarmaoficial/30768026417/097f3093f7b89a1c1bb53e58477ac04e.jpeg",
+    image: "",
     category: "Ômega 3",
     description: "Embalagem econômica com 180 cápsulas de ômega 3 1000mg cada, oferece excelente custo-benefício para uso contínuo, garantindo todos os benefícios por longa duração.",
     benefits: ["180 cápsulas", "Econômico", "1000mg", "Longa duração"],
