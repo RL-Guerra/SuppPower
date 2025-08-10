@@ -251,7 +251,7 @@ export const products: Product[] = [
     name: "Sundown Vitamina E 400Ui 100 cápsulas",
     price: 114.75,
     originalPrice: 135.00,
-    image: "",
+    image: "https://tse1.mm.bing.net/th/id/OIP.jXBMWCxoePgIaFmD4AiJZgHaHa?cb=thfvnext&rs=1&pid=ImgDetMain&o=7&rm=3",
     category: "Vitaminas",
     description: "Antioxidante, sistema imunológico, saúde da pele, cérebro, coração e circulação. Fórmula balanceada com 400ui para proteção diária. Embalagem com 100 cápsulas para uso contínuo e resultados duradouros.",
     benefits: ["Sistema imunológico", "Saúde do cérebro", "Saúde do coração", "Circulação"],
