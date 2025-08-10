@@ -213,7 +213,7 @@ export const products: Product[] = [
     name: "Sundown Ômega 3 1000mg 180 cápsulas",
     price: 139.40,
     originalPrice: 164.00,
-    image: "https://dmvfarma.vtexassets.com/arquivos/ids/257358/30768038489-SuplementoAlimentarSundownOmega-31000mg180Capsulas-1.jpg?v=638621039315100000",
+    image: "",
     category: "Ômega 3",
     description: "Embalagem econômica com 180 cápsulas de ômega 3 1000mg cada, oferece excelente custo-benefício para uso contínuo, garantindo todos os benefícios por longa duração.",
     benefits: ["180 cápsulas", "Econômico", "1000mg", "Longa duração"],
