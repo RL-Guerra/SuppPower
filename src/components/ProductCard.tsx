@@ -251,7 +251,7 @@ export const products: Product[] = [
     name: "Sundown Vitamina E 400Ui 100 cápsulas",
     price: 114.75,
     originalPrice: 135.00,
-    image: "https://www.drogaraia.com.br/_next/image?url=https%3A%2F%2Fproduct-data.raiadrogasil.io%2Fimages%2F15203652.webp&w=3840&q=40",
+    image: "https://a-static.mlcdn.com.br/800x560/suplemento-alimentar-vitamina-e-400ui-sundown-naturals-30-capsulas-softgel-sundown-nutrition/resilifarmaoficial/30768026417/097f3093f7b89a1c1bb53e58477ac04e.jpeg",
     category: "Vitaminas",
     description: "Antioxidante, sistema imunológico, saúde da pele, cérebro, coração e circulação. Fórmula balanceada com 400ui para proteção diária. Embalagem com 100 cápsulas para uso contínuo e resultados duradouros.",
     benefits: ["Sistema imunológico", "Saúde do cérebro", "Saúde do coração", "Circulação"],
