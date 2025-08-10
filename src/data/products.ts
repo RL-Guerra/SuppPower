@@ -291,5 +291,113 @@ export const products: Product[] = [
     featured: true,
     rating: 4.7,
     paymentLink: "https://payment-link-v3.stone.com.br/pl_PeR1YAlzbk9qr3Ju2eFRgD28NVpLaX5Q"
+  },
+
+  // Ensure
+  {
+    id: 22,
+    name: "Ensure Banana Suplemento Alimentar 400g",
+    price: 79.99,
+    originalPrice: 100.00,
+    image: "https://a-static.mlcdn.com.br/800x560/suplemento-adulto-ensure-po-sabor-banana-400g/drogal/5052114/c5b0c8d15ffe4e7a977f650b56a80500.jpeg",
+    category: "Ensure",
+    description: "Suplemento alimentar completo com sabor banana, rico em proteínas, vitaminas e minerais essenciais. Ideal para complementar a alimentação e fornecer nutrição balanceada para adultos que precisam de suporte nutricional adicional.",
+    benefits: ["Nutrição completa", "Rico em proteínas", "Vitaminas e minerais", "Sabor banana"],
+    inStock: true,
+    rating: 4.6,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_LXRgJoPK7xYVk2rTOH7kyl2nqj0vQW6M"
+  },
+  {
+    id: 23,
+    name: "Ensure Chocolate Suplemento Alimentar 400g",
+    price: 79.99,
+    originalPrice: 100.00,
+    image: "https://a-static.mlcdn.com.br/800x560/ensure-chocolate-suplemento-alimentar-400g/multibiosante/18304052851611eca0374201ac185055/c7ef2bb8072837ddf0ee7bb941a68d24.jpeg",
+    category: "Ensure",
+    description: "Suplemento alimentar com delicioso sabor chocolate, formulado com proteínas de alta qualidade, vitaminas e minerais. Perfeito para quem busca nutrição completa com sabor irresistível e praticidade no dia a dia.",
+    benefits: ["Sabor chocolate", "Proteínas de qualidade", "Nutrição balanceada", "Fácil preparo"],
+    inStock: true,
+    rating: 4.7,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_Gv32z5gDM9Vl5wVurEh0BJdnQO41rKmL"
+  },
+  {
+    id: 24,
+    name: "Ensure Morango Suplemento Alimentar 400g",
+    price: 79.99,
+    originalPrice: 100.00,
+    image: "https://a-static.mlcdn.com.br/800x560/suplemento-adulto-ensure-po-sabor-morango-400g/drogal/5052041/7af765094f925a8c5e43c74b75278d2b.jpeg",
+    category: "Ensure",
+    description: "Suplemento alimentar com refrescante sabor morango, enriquecido com nutrientes essenciais para uma alimentação equilibrada. Ideal para complementar a dieta com sabor suave e agradável que toda família aprova.",
+    benefits: ["Sabor morango", "Nutrientes essenciais", "Alimentação equilibrada", "Sabor suave"],
+    inStock: true,
+    rating: 4.5,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_W6pbE8dPAgm0oeH6ptYL235NLVMJnrXO"
+  },
+  {
+    id: 25,
+    name: "Ensure Baunilha Suplemento Alimentar 400g",
+    price: 79.99,
+    originalPrice: 100.00,
+    image: "https://a-static.mlcdn.com.br/800x560/ensure-baunilha-suplemento-alimentar-400g/drogariaaraujosa/95915/6b3eeebec6faabf3324d10341ee0e6cf.jpeg",
+    category: "Ensure",
+    description: "Suplemento alimentar com clássico sabor baunilha, rico em proteínas, vitaminas e minerais para nutrição completa. Sabor tradicional e versátil que pode ser consumido puro ou adicionado a outras receitas.",
+    benefits: ["Sabor baunilha", "Rico em proteínas", "Vitaminas e minerais", "Versátil"],
+    inStock: true,
+    rating: 4.6,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_5V1ovnmAbNyGprrxCnH5p4RdrMq0xX7a"
+  },
+  {
+    id: 26,
+    name: "Ensure Banana Suplemento Alimentar 850g",
+    price: 149.99,
+    originalPrice: 180.00,
+    image: "https://a-static.mlcdn.com.br/800x560/ensure-em-po-sabor-banana-850g/drogal/9990528/88f1a0924134637b40ce14f6f3c149f8.jpeg",
+    category: "Ensure",
+    description: "Embalagem econômica de 850g com sabor banana, oferece excelente custo-benefício para uso prolongado. Rico em nutrientes essenciais, proteínas e vitaminas para suporte nutricional completo e duradouro.",
+    benefits: ["Embalagem econômica", "850g", "Sabor banana", "Uso prolongado"],
+    inStock: true,
+    featured: true,
+    rating: 4.8,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_5qE7obzj164e02mfnTYMx8p9GZBkRAWY"
+  },
+  {
+    id: 27,
+    name: "Ensure Chocolate Suplemento Alimentar 850g",
+    price: 149.99,
+    originalPrice: 180.00,
+    image: "https://drogal.vtexassets.com/arquivos/ids/230221-800-600?v=638575092343570000&width=800&height=600&aspect=true",
+    category: "Ensure",
+    description: "Versão econômica de 850g com irresistível sabor chocolate. Perfeito para famílias ou uso contínuo, oferecendo nutrição completa com o sabor que todos adoram por mais tempo e com melhor custo-benefício.",
+    benefits: ["850g econômico", "Sabor chocolate", "Para famílias", "Melhor custo-benefício"],
+    inStock: true,
+    featured: true,
+    rating: 4.7,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_Qa8XKE4pOnVAzWXHPPImedLklJWjrY5N"
+  },
+  {
+    id: 28,
+    name: "Ensure Morango Suplemento Alimentar 850g",
+    price: 149.99,
+    originalPrice: 180.00,
+    image: "https://http2.mlstatic.com/D_NQ_NP_994863-MLA75426832721_032024-O.webp",
+    category: "Ensure",
+    description: "Embalagem familiar de 850g com delicioso sabor morango. Ideal para toda família, oferece nutrição completa por mais tempo com excelente custo-benefício e sabor refrescante que agrada a todos.",
+    benefits: ["Embalagem familiar", "Sabor morango", "Nutrição completa", "Excelente custo-benefício"],
+    inStock: true,
+    rating: 4.6,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_5vPqxGZ4RM81r99BCDU5rJWw9DA0n6Og"
+  },
+  {
+    id: 29,
+    name: "Ensure Baunilha Suplemento Alimentar 850g",
+    price: 149.99,
+    originalPrice: 180.00,
+    image: "https://http2.mlstatic.com/D_NQ_NP_766680-MLA75426833715_032024-O.webp",
+    category: "Ensure",
+    description: "Versão econômica de 850g com tradicional sabor baunilha. Perfeito para uso contínuo, oferece nutrição balanceada com sabor clássico e versátil que pode ser usado em diversas preparações culinárias.",
+    benefits: ["Versão econômica", "Sabor tradicional", "Uso contínuo", "Versátil para receitas"],
+    inStock: true,
+    rating: 4.5,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_e4g3q9OQVlobaPWVfgS70ZYGXnvRAKz5"
   }
 ];
