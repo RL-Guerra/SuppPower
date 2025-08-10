@@ -200,7 +200,7 @@ export const products: Product[] = [
     name: "Sundown Ômega 3 1000mg 180 cápsulas",
     price: 139.40,
     originalPrice: 164.00,
-    image: "",
+    image: "https://a-static.mlcdn.com.br/800x560/sundown-omega-3-1000mg-180-capsulas-nestle/efacil/4303050/f0e4aa559b479c29029caf79d1885831.jpeg",
     category: "Ômega 3",
     description: "Embalagem econômica com 180 cápsulas de ômega 3 1000mg. Excelente custo-benefício para uso contínuo. Rico em ácidos graxos essenciais para manutenção da saúde cardiovascular, cerebral e articular.",
     benefits: ["180 cápsulas", "Econômico", "1000mg", "Longa duração"],
