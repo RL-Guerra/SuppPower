@@ -564,6 +564,16 @@ export const Contact: React.FC = () => {
                     <option value="Sundown Ômega 3 Plus 1000mg">Sundown Ômega 3 Plus 1000mg</option>
                     <option value="Sundown Vitamina C 1000mg">Sundown Vitamina C 1000mg</option>
                     <option value="Colágeno Vital Proteins">Colágeno Vital Proteins</option>
+                    <option value="Ensure Banana 400g">Ensure Banana 400g</option>
+                    <option value="Ensure Chocolate 400g">Ensure Chocolate 400g</option>
+                    <option value="Ensure Morango 400g">Ensure Morango 400g</option>
+                    <option value="Ensure Baunilha 400g">Ensure Baunilha 400g</option>
+                    <option value="Ensure Banana 850g">Ensure Banana 850g</option>
+                    <option value="Ensure Chocolate 850g">Ensure Chocolate 850g</option>
+                    <option value="Ensure Morango 850g">Ensure Morango 850g</option>
+                    <option value="Ensure Baunilha 850g">Ensure Baunilha 850g</option>
+                    <option value="Ensure Advance Café 850g">Ensure Advance Café 850g</option>
+                    <option value="Ensure Advance Café 400g">Ensure Advance Café 400g</option>
                   </select>
                 </div>
                 

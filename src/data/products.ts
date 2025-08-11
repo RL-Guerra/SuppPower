@@ -399,5 +399,32 @@ export const products: Product[] = [
     inStock: true,
     rating: 4.5,
     paymentLink: "https://payment-link-v3.stone.com.br/pl_e4g3q9OQVlobaPWVfgS70ZYGXnvRAKz5"
+  },
+  {
+    id: 30,
+    name: "Ensure Advance Café 850g",
+    price: 149.99,
+    originalPrice: 180.00,
+    image: "https://drogal.vtexassets.com/arquivos/ids/230164-800-600?v=638575092170370000&width=800&height=600&aspect=true",
+    category: "Ensure",
+    description: "Versão avançada do Ensure com delicioso sabor café. Fórmula premium com nutrientes essenciais para adultos que buscam nutrição completa com o sabor energizante do café. Ideal para começar o dia com energia e nutrição balanceada.",
+    benefits: ["Fórmula avançada", "Sabor café", "Nutrição premium", "Energia matinal"],
+    inStock: true,
+    featured: true,
+    rating: 4.7,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_pBbx6PqGNDOVjaoCdtMMY27Ww4X9Rkn5"
+  },
+  {
+    id: 31,
+    name: "Ensure Advance Café 400g",
+    price: 79.99,
+    originalPrice: 100.00,
+    image: "https://drogal.vtexassets.com/arquivos/ids/230150-1200-900?v=638574507435570000&width=1200&height=900&aspect=true",
+    category: "Ensure",
+    description: "Suplemento alimentar Ensure Advance com sabor café em embalagem de 400g. Fórmula avançada com proteínas de alta qualidade, vitaminas e minerais essenciais. Perfeito para quem ama café e busca nutrição completa.",
+    benefits: ["Sabor café", "Fórmula avançada", "Proteínas de qualidade", "Vitaminas essenciais"],
+    inStock: true,
+    rating: 4.6,
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_kKOenQbp0GRMnw6tOrU23AaDmlv6WoJB"
   }
 ];
