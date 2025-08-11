@@ -317,6 +317,7 @@ export const products: Product[] = [
     description: "Suplemento alimentar com delicioso sabor chocolate, formulado com proteínas de alta qualidade, vitaminas e minerais. Perfeito para quem busca nutrição completa com sabor irresistível e praticidade no dia a dia.",
     benefits: ["Sabor chocolate", "Proteínas de qualidade", "Nutrição balanceada", "Fácil preparo"],
     inStock: true,
+    featured: true,
     rating: 4.7,
     paymentLink: "https://payment-link-v3.stone.com.br/pl_Gv32z5gDM9Vl5wVurEh0BJdnQO41rKmL"
   },
@@ -330,6 +331,7 @@ export const products: Product[] = [
     description: "Suplemento alimentar com refrescante sabor morango, enriquecido com nutrientes essenciais para uma alimentação equilibrada. Ideal para complementar a dieta com sabor suave e agradável que toda família aprova.",
     benefits: ["Sabor morango", "Nutrientes essenciais", "Alimentação equilibrada", "Sabor suave"],
     inStock: true,
+    featured: true,
     rating: 4.5,
     paymentLink: "https://payment-link-v3.stone.com.br/pl_W6pbE8dPAgm0oeH6ptYL235NLVMJnrXO"
   },
