@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, CreditCard, QrCode } from 'lucide-react';
 import { products } from '../data/products';
 
 export const ProductSlider: React.FC = () => {
@@ -29,6 +29,18 @@ export const ProductSlider: React.FC = () => {
     setIsAutoPlaying(false);
     // Reativar autoplay após 10 segundos
     setTimeout(() => setIsAutoPlaying(true), 10000);
+  };
+
+  const handleBuyNow = (product: any) => {
+    window.open(product.paymentLink, '_blank');
+  };
+
+  const handlePixPayment = (product: any) => {
+    const pixKey = "00020126360014BR.GOV.BCB.PIX0114618693240001555204000053039865802BR5901N6001C62070503***6304C8B4";
+    const productInfo = `${product.name} - R$ ${product.price.toFixed(2)}`;
+    const message = `Olá! Gostaria de comprar: ${productInfo}\n\nChave PIX: ${pixKey}`;
+    const whatsappUrl = `https://wa.me/5518981621064?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   const goToPrevious = () => {
@@ -156,12 +168,23 @@ export const ProductSlider: React.FC = () => {
                     )}
                   </div>
 
-                  <button
-                    onClick={() => window.open(product.paymentLink, '_blank')}
-                    className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold text-lg transition-colors duration-200 w-full lg:w-auto"
-                  >
-                    Comprar Agora
-                  </button>
+                  <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+                    <button
+                      onClick={() => handleBuyNow(product)}
+                      className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-lg transition-colors duration-200 flex items-center justify-center gap-2"
+                    >
+                      <CreditCard className="w-5 h-5" />
+                      Cartão
+                    </button>
+                    
+                    <button
+                      onClick={() => handlePixPayment(product)}
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold text-lg transition-colors duration-200 flex items-center justify-center gap-2"
+                    >
+                      <QrCode className="w-5 h-5" />
+                      PIX
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

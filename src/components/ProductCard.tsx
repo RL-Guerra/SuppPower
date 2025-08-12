@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, CreditCard } from 'lucide-react';
+import { Star, CreditCard, QrCode } from 'lucide-react';
 import { Product } from '../types';
 
 export const products: Product[] = [
@@ -296,6 +296,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const handleBuyNow = () => {
     window.open(product.paymentLink, '_blank');
   };
+
+  const handlePixPayment = () => {
+    const pixKey = "00020126360014BR.GOV.BCB.PIX0114618693240001555204000053039865802BR5901N6001C62070503***6304C8B4";
+    const productInfo = `${product.name} - R$ ${product.price.toFixed(2)}`;
+    const message = `Olá! Gostaria de comprar: ${productInfo}\n\nChave PIX: ${pixKey}`;
+    const whatsappUrl = `https://wa.me/5518981621064?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col h-full product-card">
       <div className="relative">
@@ -364,14 +373,25 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </div>
         </div>
         
-        <button
-          onClick={handleBuyNow}
-          className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition-colors duration-200 flex items-center justify-center gap-2 font-medium"
-          disabled={!product.inStock}
-        >
-          <CreditCard className="w-4 h-4" />
-          {product.inStock ? 'Comprar Agora' : 'Fora de Estoque'}
-        </button>
+        <div className="grid grid-cols-2 gap-2">
+          <button
+            onClick={handleBuyNow}
+            className="bg-green-600 text-white py-2 px-3 rounded-md hover:bg-green-700 transition-colors duration-200 flex items-center justify-center gap-1 font-medium text-sm"
+            disabled={!product.inStock}
+          >
+            <CreditCard className="w-4 h-4" />
+            {product.inStock ? 'Cartão' : 'Fora de Estoque'}
+          </button>
+          
+          <button
+            onClick={handlePixPayment}
+            className="bg-blue-600 text-white py-2 px-3 rounded-md hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center gap-1 font-medium text-sm"
+            disabled={!product.inStock}
+          >
+            <QrCode className="w-4 h-4" />
+            PIX
+          </button>
+        </div>
       </div>
     </div>
   );
