@@ -36,9 +36,8 @@ export const ProductSlider: React.FC = () => {
   };
 
   const handlePixPayment = (product: any) => {
-    const pixKey = "00020126360014BR.GOV.BCB.PIX0114618693240001555204000053039865802BR5901N6001C62070503***6304C8B4";
     const productInfo = `${product.name} - R$ ${product.price.toFixed(2)}`;
-    const message = `Olá! Gostaria de comprar: ${productInfo}\n\nChave PIX: ${pixKey}`;
+    const message = `Olá! Gostaria de comprar: ${productInfo}\n\nPoderia me enviar a chave PIX para pagamento?`;
     const whatsappUrl = `https://wa.me/5518981621064?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
