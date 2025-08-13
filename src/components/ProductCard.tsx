@@ -226,7 +226,7 @@ export const products: Product[] = [
     name: "Sundown Vitamina C 1000mg 180 comprimidos",
     price: 160.00,
     originalPrice: 200.00,
-    image: "https://dmvfarma.vtexassets.com/arquivos/ids/257390/30768301576-SuplementoAlimentarSundownVitaminaC1000mg180Comprimidos-1.jpg?v=638621039532270000",
+    image: "https://tse1.mm.bing.net/th/id/OIP.HFRE4EUiZfZ9DIssdb7DtAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
     category: "Vitaminas",
     description: "Auxilia sistema imune, formação do colágeno, absorção de ferro e previne anemia. Dose potente de 1000mg para máxima proteção imunológica. Embalagem econômica com 180 comprimidos para uso prolongado.",
     benefits: ["Sistema imune", "Formação colágeno", "Absorção ferro", "Previne anemia"],
