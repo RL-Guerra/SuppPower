@@ -117,13 +117,14 @@ export const products: Product[] = [
   {
     id: 9,
     name: "Kit Nutren Senior Sem Sabor 740g - 2 unidades",
-    price: 228.00,
+    price: 200.00,
     originalPrice: 285.00,
     image: "https://www.nutricaoatevoce.com.br/media/catalog/product/cache/3f091c246aa3c76f3e4c9f2d55ddba5b/n/u/nutren-senior-pack---hero1.jpg",
     category: "Senior 50+",
     description: "Kit econômico com 2 unidades do Nutren Senior. Contém mais de 20 vitaminas e minerais essenciais complementando as necessidades nutricionais específicas de adultos maduros.",
     benefits: ["2 unidades", "+20 vitaminas", "Células vermelhas", "Energia"],
     inStock: true,
+    featured: true,
     rating: 4.5,
     paymentLink: "https://payment-link-v3.stone.com.br/pl_g6R59w0D2oOWjrxHwF5aW8EeVMZlPK37"
   },
