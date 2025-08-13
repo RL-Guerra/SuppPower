@@ -125,7 +125,7 @@ export const products: Product[] = [
     benefits: ["2 unidades", "+20 vitaminas", "Células vermelhas", "Energia"],
     inStock: true,
     rating: 4.5,
-    paymentLink: "https://payment-link-v3.stone.com.br/pl_YVzxEanDW5oMODLSQdfZrp9k6O2JQ3jy"
+    paymentLink: "https://payment-link-v3.stone.com.br/pl_g6R59w0D2oOWjrxHwF5aW8EeVMZlPK37"
   },
   {
     id: 10,
